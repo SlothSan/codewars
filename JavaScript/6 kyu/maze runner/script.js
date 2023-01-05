@@ -30,6 +30,7 @@ Maze key is as below
 */
 
 const mazeRunner = (maze, directions) => {
+  // find start position which will be maze[6][1] in the example maze.
   console.log(maze);
 };
 
