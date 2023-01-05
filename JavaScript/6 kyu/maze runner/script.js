@@ -31,7 +31,42 @@ Maze key is as below
 
 const mazeRunner = (maze, directions) => {
   // find start position which will be maze[6][1] in the example maze.
-  console.log(maze);
+  const findStart = (maze) => {
+    const mazeCols = maze[0].length;
+    const startPosition = maze.flat().indexOf(2);
+    const row = Math.floor(startPosition / mazeCols);
+    const column = startPosition - row * mazeCols;
+    return {
+      row,
+      column
+    }
+  }
+  const checkPosition = (maze, row, column) => {
+    console.log('Row is: ', row, 'Col is: ', column)
+    const currentPosition = maze[row][column];
+    console.log('pos is: ', currentPosition)
+    if(currentPosition === 'undefined' || currentPosition === 1) {
+      return 'Dead';
+    }
+    if(currentPosition === 0) {
+      return 'Continue';
+    }
+    if(currentPosition === 3) {
+      return 'Finish';
+    }
+  }
+
+  let position = findStart(maze);
+  for(let i = 0; i < directions.length; i++) {
+    if(directions[i] === 'N') {
+      console.log('Position is:', checkPosition(maze, position.row-1, position.column))
+      position.row--;
+    }
+    if(directions[i] === 'E') {
+      console.log('Position is: ', checkPosition(maze, position.row, position.column+1))
+      position.column++;
+    }
+  }
 };
 
 console.log(
