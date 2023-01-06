@@ -29,44 +29,62 @@ Maze key is as below
 6. If you find yourself still in the maze after using all the moves, you should return Lost.
 */
 
-const mazeRunner = (maze, directions) => {
-  // find start position which will be maze[6][1] in the example maze.
-  const findStart = (maze) => {
-    const mazeCols = maze[0].length;
-    const startPosition = maze.flat().indexOf(2);
-    const row = Math.floor(startPosition / mazeCols);
-    const column = startPosition - row * mazeCols;
-    return {
-      row,
-      column
-    }
-  }
-  const checkPosition = (maze, row, column) => {
-    console.log('Row is: ', row, 'Col is: ', column)
-    const currentPosition = maze[row][column];
-    console.log('pos is: ', currentPosition)
-    if(currentPosition === 'undefined' || currentPosition === 1) {
-      return 'Dead';
-    }
-    if(currentPosition === 0) {
-      return 'Continue';
-    }
-    if(currentPosition === 3) {
-      return 'Finish';
-    }
-  }
 
+const findStart = (maze) => {
+  const mazeCols = maze[0].length;
+  const startPosition = maze.flat().indexOf(2);
+  const row = Math.floor(startPosition / mazeCols);
+  const column = startPosition - row * mazeCols;
+  return {
+    row,
+    column
+  }
+}
+
+
+const checkPosition = (maze, row, column) => {
+  // console.log('Row is: ', row, 'Col is: ', column)
+  const currentPosition = maze[row][column];
+  // console.log('pos is: ', currentPosition)
+  if(currentPosition === 'undefined' || currentPosition === 1) {
+    return 'Dead';
+  }
+  if(currentPosition === 0) {
+    return 'Continue';
+  }
+  if(currentPosition === 3) {
+    return 'Finish';
+  }
+}
+
+const mazeRunner = (maze, directions) => {
+  let currentPosition = '';
+  // find start position which will be maze[6][1] in the example maze
   let position = findStart(maze);
   for(let i = 0; i < directions.length; i++) {
     if(directions[i] === 'N') {
-      console.log('Position is:', checkPosition(maze, position.row-1, position.column))
+      currentPosition = checkPosition(maze, position.row-1, position.column)
       position.row--;
     }
+    if(directions[i] === 'S') {
+      currentPosition = checkPosition(maze, position.row+1, position.column)
+      position.row++
+    }
     if(directions[i] === 'E') {
-      console.log('Position is: ', checkPosition(maze, position.row, position.column+1))
+      currentPosition = checkPosition(maze, position.row, position.column+1)
       position.column++;
     }
+    if(directions[i] === 'W') {
+      currentPosition = checkPosition(maze, position.row, position.column-1)
+      position.column--;
+    }
+    if(currentPosition !== 'Continue') {
+      break;
+    }
+    console.log(currentPosition);
   }
+  if(currentPosition)
+  return currentPosition;
 };
 
 console.log(
