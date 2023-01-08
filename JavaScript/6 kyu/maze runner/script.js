@@ -83,7 +83,9 @@ const mazeRunner = (maze, directions) => {
     }
     console.log(currentPosition);
   }
-  if(currentPosition)
+  if(currentPosition === 'Continue') {
+    return 'Lost';
+  }
   return currentPosition;
 };
 
