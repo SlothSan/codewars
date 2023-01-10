@@ -40,40 +40,24 @@ if you want to translate, please ask before translating.
 #*/
 
 const dirReduc = (arr) => {
-  let reducedDirections = [];
-  let dirCount = {};
-  for (const direction of arr) {
-    dirCount[direction] = dirCount[direction] ? dirCount[direction] + 1 : 1;
-  }
-  if (
-    dirCount["NORTH"] === 1 &&
-    dirCount["SOUTH"] === 1 &&
-    dirCount["EAST"] === 1 &&
-    dirCount["WEST"] === 1
-  ) {
-    return arr;
-  }
-  console.log(dirCount);
-  if (dirCount["EAST"] > dirCount["WEST"]) {
-    for (let i = dirCount["EAST"]; i > dirCount["WEST"]; i--) {
-      reducedDirections.push("EAST");
+  const opposites = {
+    NORTH: "SOUTH",
+    EAST: "WEST",
+    SOUTH: "NORTH",
+    WEST: "EAST",
+  };
+  const reducedDirections = [];
+  arr.forEach((direction) => {
+    if (reducedDirections.length) {
+      const prevDirection = reducedDirections.pop();
+      if (prevDirection !== opposites[direction]) {
+        reducedDirections.push(prevDirection);
+        reducedDirections.push(direction);
+      }
+    } else {
+      reducedDirections.push(direction);
     }
-  }
-  if (dirCount["WEST"] > dirCount["EAST"]) {
-    for (let i = dirCount["WEST"]; i > dirCount["EAST"]; i--) {
-      reducedDirections.push("WEST");
-    }
-  }
-  if (dirCount["NORTH"] > dirCount["SOUTH"]) {
-    for (let i = dirCount["NORTH"]; i > dirCount["SOUTH"]; i--) {
-      reducedDirections.push("NORTH");
-    }
-  }
-  if (dirCount["SOUTH"] > dirCount["NORTH"]) {
-    for (let i = dirCount["SOUTH"]; i > dirCount["NORTH"]; i--) {
-      reducedDirections.push("SOUTH");
-    }
-  }
+  });
   return reducedDirections;
 };
 
