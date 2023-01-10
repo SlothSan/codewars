@@ -65,18 +65,30 @@ const mazeRunner = (maze, directions) => {
     if(directions[i] === 'N') {
       currentPosition = checkPosition(maze, position.row-1, position.column)
       position.row--;
+      if(position.row < 0) {
+        return 'Dead';
+      }
     }
     if(directions[i] === 'S') {
       currentPosition = checkPosition(maze, position.row+1, position.column)
       position.row++
+      if(position.row > maze[0][0].length) {
+        return 'Dead';
+      }
     }
     if(directions[i] === 'E') {
       currentPosition = checkPosition(maze, position.row, position.column+1)
       position.column++;
+      if(position.column > maze[0].length) {
+        return 'Dead';
+      }
     }
     if(directions[i] === 'W') {
       currentPosition = checkPosition(maze, position.row, position.column-1)
       position.column--;
+      if(position.column < 0) {
+        return 'Dead';
+      }
     }
     if(currentPosition !== 'Continue') {
       break;
