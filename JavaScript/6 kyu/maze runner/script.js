@@ -46,7 +46,6 @@ const findStart = (maze) => {
 };
 
 const checkPosition = (maze, row, column, max) => {
-  console.log(row, column, max);
   if (row < 0 || row >= max || column < 0 || column >= max) {
     return "Dead";
   }
@@ -61,7 +60,6 @@ const checkPosition = (maze, row, column, max) => {
   if (currentPosition === 3) {
     return "Finish";
   }
-  console.log('Current Position is:', currentPosition)
 };
 
 const mazeRunner = (maze, directions) => {
@@ -70,7 +68,6 @@ const mazeRunner = (maze, directions) => {
   let position = findStart(maze);
   console.log(position);
   for (let i = 0; i < directions.length; i++) {
-    console.log("On Direction No: ", i);
     if (newPosition === "Dead" || newPosition === "Finish") {
       return newPosition;
     }
@@ -113,10 +110,6 @@ const mazeRunner = (maze, directions) => {
   }
   return newPosition;
 };
-
-// console.log(
-//   mazeRunner(maze, ["N", "N", "N", "N", "N", "E", "E", "E", "E", "E"])
-// );
 
 console.log(
   mazeRunner(maze, [
