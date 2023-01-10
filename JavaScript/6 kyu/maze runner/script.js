@@ -1,11 +1,14 @@
 const maze = [
-  [1, 1, 1, 1, 1, 1, 1],
-  [1, 0, 0, 0, 0, 0, 3],
-  [1, 0, 1, 0, 1, 0, 1],
-  [0, 0, 1, 0, 0, 0, 1],
-  [1, 0, 1, 0, 1, 0, 1],
-  [1, 0, 0, 0, 0, 0, 1],
-  [1, 2, 1, 0, 1, 0, 1],
+  [1, 1, 1, 1, 1, 1, 1, 1, 0, 1],
+  [1, 3, 1, 0, 1, 0, 0, 0, 0, 1],
+  [1, 0, 1, 0, 0, 0, 1, 1, 0, 1],
+  [1, 0, 1, 1, 1, 1, 1, 0, 0, 1],
+  [1, 0, 1, 0, 0, 0, 0, 0, 0, 1],
+  [1, 0, 1, 0, 1, 0, 1, 0, 0, 1],
+  [1, 0, 1, 0, 1, 0, 0, 0, 0, 0],
+  [1, 0, 1, 0, 1, 0, 1, 1, 0, 1],
+  [1, 0, 0, 0, 1, 0, 0, 0, 0, 1],
+  [1, 1, 1, 0, 1, 1, 1, 1, 2, 1],
 ];
 
 /*
@@ -29,78 +32,111 @@ Maze key is as below
 6. If you find yourself still in the maze after using all the moves, you should return Lost.
 */
 
-
 const findStart = (maze) => {
   const mazeCols = maze[0].length;
   const startPosition = maze.flat().indexOf(2);
   const row = Math.floor(startPosition / mazeCols);
   const column = startPosition - row * mazeCols;
+  const max = mazeCols;
   return {
     row,
-    column
-  }
-}
-
-
-const checkPosition = (maze, row, column) => {
-  // console.log('Row is: ', row, 'Col is: ', column)
-  const currentPosition = maze[row][column];
-  // console.log('pos is: ', currentPosition)
-  if(currentPosition === 'undefined' || currentPosition === 1) {
-    return 'Dead';
-  }
-  if(currentPosition === 0) {
-    return 'Continue';
-  }
-  if(currentPosition === 3) {
-    return 'Finish';
-  }
-}
-
-const mazeRunner = (maze, directions) => {
-  let currentPosition = '';
-  // find start position which will be maze[6][1] in the example maze
-  let position = findStart(maze);
-  for(let i = 0; i < directions.length; i++) {
-    if(directions[i] === 'N') {
-      currentPosition = checkPosition(maze, position.row-1, position.column)
-      position.row--;
-      if(position.row < 0) {
-        return 'Dead';
-      }
-    }
-    if(directions[i] === 'S') {
-      currentPosition = checkPosition(maze, position.row+1, position.column)
-      position.row++
-      if(position.row > maze[0][0].length) {
-        return 'Dead';
-      }
-    }
-    if(directions[i] === 'E') {
-      currentPosition = checkPosition(maze, position.row, position.column+1)
-      position.column++;
-      if(position.column > maze[0].length) {
-        return 'Dead';
-      }
-    }
-    if(directions[i] === 'W') {
-      currentPosition = checkPosition(maze, position.row, position.column-1)
-      position.column--;
-      if(position.column < 0) {
-        return 'Dead';
-      }
-    }
-    if(currentPosition !== 'Continue') {
-      break;
-    }
-    console.log(currentPosition);
-  }
-  if(currentPosition === 'Continue') {
-    return 'Lost';
-  }
-  return currentPosition;
+    column,
+    max,
+  };
 };
 
+const checkPosition = (maze, row, column, max) => {
+  console.log(row, column, max);
+  if (row < 0 || row >= max || column < 0 || column >= max) {
+    return "Dead";
+  }
+  const currentPosition = maze[row][column];
+  // console.log('pos is: ', currentPosition)
+  if (currentPosition === "undefined" || currentPosition === 1) {
+    return "Dead";
+  }
+  if (currentPosition === 0 || currentPosition === 2) {
+    return "Lost";
+  }
+  if (currentPosition === 3) {
+    return "Finish";
+  }
+  console.log('Current Position is:', currentPosition)
+};
+
+const mazeRunner = (maze, directions) => {
+  let newPosition = "";
+  // find start position which will be maze[6][1] in the example maze
+  let position = findStart(maze);
+  console.log(position);
+  for (let i = 0; i < directions.length; i++) {
+    console.log("On Direction No: ", i);
+    if (newPosition === "Dead" || newPosition === "Finish") {
+      return newPosition;
+    }
+    if (directions[i] === "N") {
+      position.row--;
+      newPosition = checkPosition(
+        maze,
+        position.row,
+        position.column,
+        position.max
+      );
+    }
+    if (directions[i] === "S") {
+      position.row++;
+      newPosition = checkPosition(
+        maze,
+        position.row,
+        position.column,
+        position.max
+      );
+    }
+    if (directions[i] === "E") {
+      position.column++;
+      newPosition = checkPosition(
+        maze,
+        position.row,
+        position.column,
+        position.max
+      );
+    }
+    if (directions[i] === "W") {
+      position.column--;
+      newPosition = checkPosition(
+        maze,
+        position.row,
+        position.column,
+        position.max
+      );
+    }
+  }
+  return newPosition;
+};
+
+// console.log(
+//   mazeRunner(maze, ["N", "N", "N", "N", "N", "E", "E", "E", "E", "E"])
+// );
+
 console.log(
-  mazeRunner(maze, ["N", "N", "N", "N", "N", "E", "E", "E", "E", "E"])
+  mazeRunner(maze, [
+    "N",
+    "N",
+    "N",
+    "N",
+    "N",
+    "N",
+    "N",
+    "N",
+    "N",
+    "S",
+    "S",
+    "S",
+    "S",
+    "S",
+    "S",
+    "S",
+    "S",
+    "S",
+  ])
 );
