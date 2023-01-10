@@ -46,8 +46,10 @@ const dirReduc = (arr) => {
     dirCount[direction] = dirCount[direction] ? dirCount[direction] + 1 : 1;
   }
   if (
-    dirCount["NORTH"] === dirCount["SOUTH"] &&
-    dirCount["EAST"] === dirCount["WEST"]
+    dirCount["NORTH"] === 1 &&
+    dirCount["SOUTH"] === 1 &&
+    dirCount["EAST"] === 1 &&
+    dirCount["WEST"] === 1
   ) {
     return arr;
   }
@@ -76,5 +78,16 @@ const dirReduc = (arr) => {
 };
 
 console.log(
-  dirReduc(["NORTH", "SOUTH", "SOUTH", "EAST", "WEST", "NORTH", "WEST"])
+  dirReduc([
+    "WEST",
+    "EAST",
+    "NORTH",
+    "SOUTH",
+    "WEST",
+    "NORTH",
+    "WEST",
+    "EAST",
+    "NORTH",
+    "SOUTH",
+  ])
 );
