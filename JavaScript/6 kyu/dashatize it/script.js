@@ -10,26 +10,12 @@ If n is not an integer, return the string "NaN".
 dashatize(274) -> '2-7-4'
 dashatize(6815) -> '68-1-5'
 */
-const removeSignAndCreateArray = (num) => {
-  num = Math.abs(num);
-  return (num = Array.from(String(num), Number));
-};
 
 const dashatize = (num) => {
-  //get 'em
-  //if num is not int return "NaN"
-  if (typeof num !== "number") {
-    return "NaN";
-  }
-  //Remove sign.
-  num = removeSignAndCreateArray(num);
-  console.log(num);
-  //Loop through num if current digit is odd and not first or last add - on either side of digit.
-  for (let i = 0; i < num.length; i++) {
-    if(num[i] % 2 !== 0) {
-        console.log(`Odd at ${i}`);
-    }
-  }
+  return num
+    .toString()
+    .replace(/([13579])/g, "-$1-") // Add dashes around odd digits
+    .replace(/\-+/g, "-") // trim multiple dashes to one dash
+    .replace(/^\-/, "") // remove starting dash
+    .replace(/\-$/, ""); // remove ending dash
 };
-
-dashatize(-12321);
