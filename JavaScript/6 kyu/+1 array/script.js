@@ -35,25 +35,35 @@ const upArray = (arr) => {
     }
     max = arr[i];
   }
-  //Catch leading 0's
-  //   console.log("0 Count: ", leadingZeroCount);
-  //   console.log(arr);
-  //   console.log(arr.join("") + 1);
-  upArray = BigInt(arr.join(""));
-  upArray = upArray + BigInt("1");
-  console.log("After +1: ", upArray);
-  upArray = upArray.toString().split("").map((number) => {return BigInt(number)});
-  //   upArray = upArray
-  //     .toString()
-  //     .split("")
-  //     .map((number) => {
-  //       return Number(number);
-  //     });
-  for (let i = 0; i < leadingZeroCount; i++) {
-    upArray.unshift(0);
+  lastDigit = arr[arr.length - 1];
+  lastDigit++;
+  console.log(lastDigit);
+  if(lastDigit < 9) {
+    arr[arr.length - 1] = lastDigit
+  } else {
+    arr[arr.length - 1] = 0;
+    arr[arr.length - 2]
   }
-  upArray.pop();
-  return upArray;
+  return arr;
+  // //Catch leading 0's
+  // //   console.log("0 Count: ", leadingZeroCount);
+  // //   console.log(arr);
+  // //   console.log(arr.join("") + 1);
+  // upArray = BigInt(arr.join(""));
+  // upArray = upArray + BigInt("1");
+  // console.log("After +1: ", upArray);
+  // upArray = upArray.toString().split("").map((number) => {return BigInt(number)});
+  // //   upArray = upArray
+  // //     .toString()
+  // //     .split("")
+  // //     .map((number) => {
+  // //       return Number(number);
+  // //     });
+  // for (let i = 0; i < leadingZeroCount; i++) {
+  //   upArray.unshift(0);
+  // }
+  // upArray.pop();
+  // return upArray;
 };
 
 console.log(upArray([4, 3, 2, 0]));
