@@ -35,14 +35,27 @@ const upArray = (arr) => {
     }
     max = arr[i];
   }
-  lastDigit = arr[arr.length - 1];
-  lastDigit++;
-  console.log(lastDigit);
-  if(lastDigit < 9) {
-    arr[arr.length - 1] = lastDigit
+  if (arr.length > 16) {
+    let firstArr = [];
+    let secondArr = [];
+    for (let i = 0; i < arr.length; i++) {
+      if (i < 16) {
+        firstArr.push(arr[i]);
+      } else {
+        secondArr.push(arr[i]);
+      }
+      secondArr.join("");
+      secondArr = parseInt(secondArr);
+      for (let j = 0; j < secondArr.length; j++) {
+        firstArr.push(secondArr[j]);
+      }
+      return firstArr;
+    }
   } else {
-    arr[arr.length - 1] = 0;
-    arr[arr.length - 2]
+    arr = arr.join("");
+    arr = parseInt(arr);
+    arr++;
+    return arr;
   }
   return arr;
   // //Catch leading 0's
@@ -59,14 +72,15 @@ const upArray = (arr) => {
   // //     .map((number) => {
   // //       return Number(number);
   // //     });
-  // for (let i = 0; i < leadingZeroCount; i++) {
-  //   upArray.unshift(0);
-  // }
+
   // upArray.pop();
   // return upArray;
 };
 
-console.log(upArray([4, 3, 2, 0]));
+console.log(upArray([0, 4, 3, 2, 0]));
+console.log(
+  upArray([1, 2, 3, 4, 5, 6, 7, 8, 9, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 0])
+);
 // console.log(upArray([0, 7])) // Should return 08
 // console.log(
 //   upArray([1, 2, 3, 4, 5, 6, 7, 8, 9, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 0])
