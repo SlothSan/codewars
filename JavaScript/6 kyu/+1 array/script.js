@@ -25,10 +25,14 @@ const convertToNumber = (number) => {
 const upArray = (arr) => {
   //if array empty return it.
   let leadingZeroCount = 0;
-  let max = 0; 
+  let max = 0;
   let firstArr = [];
   let secondArr = [];
-  if (arr === []) {
+  if (arr.length < 1) {
+    arr = null;
+  }
+  //If null coniditions are met return it.
+  if (arr === null) {
     return arr;
   }
   //Iterate through the array, if any values are negative or greater than 9 return null
@@ -37,46 +41,50 @@ const upArray = (arr) => {
       return (arr = null);
     }
     //detect leading zero's and count them to add them back later.
-    if(max < 1 && arr[i] < 1) {
+    if (max < 1 && arr[i] < 1) {
       leadingZeroCount++;
     }
     max = arr[i];
   }
-  //If null coniditions are met return it. 
-  if (arr === null) {
-    return arr;
-  }
   //Handle large arrays by splitting them before doing maths on them dur to int limitations
-  if (arr.length > 9) {
+  if (arr.length > 10) {
     for (let i = 0; i < arr.length; i++) {
-      if (i <= 9) {
+      if (i <= 10) {
         firstArr.push(arr[i]);
       } else {
+        console.log("Arr[i] is: ", arr[i]);
         secondArr.push(arr[i]);
       }
     }
+    console.log("Secondarr is:", secondArr);
+    console.log(secondArr.length);
     secondArr = parseInt(secondArr.join("")) + 1;
     secondArr = Array.from(String(secondArr), convertToNumber);
-    for (let j = 0; j < secondArr.length; j++) {
-      firstArr.push(secondArr[j]);
+    if (secondArr.length > 0) {
+      for (let j = 0; j < secondArr.length; j++) {
+        firstArr.push(secondArr[j]);
+      }
+    } else {
+      firstArr = parseInt(firstArr.join("")) + 1;
+      firstArr = Array.from(String(firstArr), convertToNumber);
     }
+
     arr = firstArr;
-  } else  {
+  } else {
     //Handle smaller arrays
     arr = parseInt(arr.join("")) + 1;
-    console.log(typeof arr);
     arr = Array.from(String(arr), convertToNumber);
   }
   //Add leading 0's back.
-  if(leadingZeroCount > 0) {
-    for(let i = 0; i < leadingZeroCount; i++) {
+  if (leadingZeroCount > 0) {
+    for (let i = 0; i < leadingZeroCount; i++) {
       arr.unshift(0);
     }
   }
   return arr;
 };
 
-console.log(upArray([0, 4, 3, 2, 0]));
+console.log(upArray([]));
 // console.log(
 //   upArray([1, 2, 3, 4, 5, 6, 7, 8, 9, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 0])
 // );
