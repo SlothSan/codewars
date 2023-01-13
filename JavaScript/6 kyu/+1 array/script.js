@@ -18,80 +18,24 @@ Invalid arrays
 
 [1, 2, 33] is invalid because 33 is not a single-digit integer */
 
-const convertToNumber = (number) => {
-  return Number(number);
-};
-
 const upArray = (arr) => {
-  //if array empty return it.
-  let leadingZeroCount = 0;
-  let max = 0;
-  let firstArr = [];
-  let secondArr = [];
-  if (arr.length < 1) {
-    arr = null;
-  }
-  //If null coniditions are met return it.
-  if (arr === null) {
-    return arr;
-  }
-  //Iterate through the array, if any values are negative or greater than 9 return null
-  for (let i = 0; i < arr.length; i++) {
-    if (arr[i] < 0 || arr[i] > 9) {
-      return (arr = null);
-    }
-    //detect leading zero's and count them to add them back later.
-    if (max < 1 && arr[i] < 1) {
-      leadingZeroCount++;
-    }
-    max = arr[i];
-  }
-  //Handle large arrays by splitting them before doing maths on them dur to int limitations
-  if (arr.length > 10) {
-    for (let i = 0; i < arr.length; i++) {
-      if (i <= 10) {
-        firstArr.push(arr[i]);
-      } else {
-        console.log("Arr[i] is: ", arr[i]);
-        secondArr.push(arr[i]);
-      }
-    }
-    console.log("Secondarr is:", secondArr);
-    console.log(secondArr.length);
-    secondArr = parseInt(secondArr.join("")) + 1;
-    secondArr = Array.from(String(secondArr), convertToNumber);
-    if (secondArr.length > 0) {
-      for (let j = 0; j < secondArr.length; j++) {
-        firstArr.push(secondArr[j]);
-      }
-    } else {
-      firstArr = parseInt(firstArr.join("")) + 1;
-      firstArr = Array.from(String(firstArr), convertToNumber);
-    }
-
-    arr = firstArr;
-  } else {
-    //Handle smaller arrays
-    arr = parseInt(arr.join("")) + 1;
-    arr = Array.from(String(arr), convertToNumber);
-  }
-  //Add leading 0's back.
-  if (leadingZeroCount > 0) {
-    for (let i = 0; i < leadingZeroCount; i++) {
-      arr.unshift(0);
+  if (arr.length === 0) return null;
+  let carry = 1;
+  for (let i = arr.length-1; i >= 0; i--) {
+    if (arr[i] > 9 || arr[i] < 0) return null;
+    if (carry > 0) {
+      arr[i] += carry;
+      carry = Math.floor(arr[i] / 10);
+      arr[i] = arr[i] % 10;
     }
   }
+  if (carry > 0) arr.unshift(carry);
   return arr;
-};
-
-console.log(upArray([]));
-// console.log(
-//   upArray([1, 2, 3, 4, 5, 6, 7, 8, 9, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 0])
-// );
-// console.log(upArray([0, 7])) // Should return 08
-// console.log(
-//   upArray([1, 2, 3, 4, 5, 6, 7, 8, 9, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 0])
-// );
-// console.log(upArray([1, -9])); //Should return null
-// console.log(upArray([1, 10])); // should return null
-// console.log(parseInt("12345678901234567890", 10)); // WHY IS THIS 12345678901234567000 ?
+  
+}
+console.log(
+  upArray([
+    0, 7, 1, 5, 7, 5, 1, 1, 0, 7, 2, 4, 3, 5, 4, 7, 3, 7, 1, 5, 2, 3, 9, 1, 5,
+    6, 7, 0, 4, 6, 2, 0,
+  ])
+);
