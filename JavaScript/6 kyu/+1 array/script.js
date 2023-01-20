@@ -35,15 +35,17 @@ const upArray = (arr) => {
     }
     max = arr[i];
   }
-  if (arr.length > 16) {
+  if (arr.length > 12) {
     let firstArr = [];
     let secondArr = [];
     for (let i = 0; i < arr.length; i++) {
-      if (i < 16) {
+      if (i < 12) {
         firstArr.push(arr[i]);
       } else {
         secondArr.push(arr[i]);
       }
+      console.log('First Arr: ', firstArr);
+      console.log("secondArr: ", secondArr);
       secondArr.join("");
       secondArr = parseInt(secondArr);
       for (let j = 0; j < secondArr.length; j++) {
@@ -77,7 +79,7 @@ const upArray = (arr) => {
   // return upArray;
 };
 
-console.log(upArray([0, 4, 3, 2, 0]));
+// console.log(upArray([0, 4, 3, 2, 0]));
 console.log(
   upArray([1, 2, 3, 4, 5, 6, 7, 8, 9, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 0])
 );
@@ -88,4 +90,3 @@ console.log(
 // console.log(upArray([1, -9])); //Should return null
 // console.log(upArray([1, 10])); // should return null
 // console.log(parseInt("12345678901234567890", 10)); // WHY IS THIS 12345678901234567000 ?
-console.log(BigInt("12345678901234567890") + BigInt("1"));
