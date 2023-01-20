@@ -19,74 +19,22 @@ Invalid arrays
 [1, 2, 33] is invalid because 33 is not a single-digit integer */
 
 const upArray = (arr) => {
-  if (arr === []) {
-    return arr;
-  }
-  let upArray = [];
-  let max = 0;
-  let leadingZeroCount = 0;
-  //Iterate through the array, if any values are negative or bigger than 9 return null
-  for (let i = 0; i < arr.length; i++) {
-    if (arr[i] < 0 || arr[i] > 9) {
-      return (upArray = null);
+  if (arr.length === 0) return null;
+  let carry = 1;
+  for (let i = arr.length - 1; i >= 0; i--) {
+    if (arr[i] > 9 || arr[i] < 0) return null;
+    if (carry > 0) {
+      arr[i] += carry;
+      carry = Math.floor(arr[i] / 10);
+      arr[i] = arr[i] % 10;
     }
-    if (max < 1 && arr[i] < 1) {
-      leadingZeroCount++;
-    }
-    max = arr[i];
   }
-  if (arr.length > 12) {
-    let firstArr = [];
-    let secondArr = [];
-    for (let i = 0; i < arr.length; i++) {
-      if (i < 12) {
-        firstArr.push(arr[i]);
-      } else {
-        secondArr.push(arr[i]);
-      }
-      console.log('First Arr: ', firstArr);
-      console.log("secondArr: ", secondArr);
-      secondArr.join("");
-      secondArr = parseInt(secondArr);
-      for (let j = 0; j < secondArr.length; j++) {
-        firstArr.push(secondArr[j]);
-      }
-      return firstArr;
-    }
-  } else {
-    arr = arr.join("");
-    arr = parseInt(arr);
-    arr++;
-    return arr;
-  }
+  if (carry > 0) arr.unshift(carry);
   return arr;
-  // //Catch leading 0's
-  // //   console.log("0 Count: ", leadingZeroCount);
-  // //   console.log(arr);
-  // //   console.log(arr.join("") + 1);
-  // upArray = BigInt(arr.join(""));
-  // upArray = upArray + BigInt("1");
-  // console.log("After +1: ", upArray);
-  // upArray = upArray.toString().split("").map((number) => {return BigInt(number)});
-  // //   upArray = upArray
-  // //     .toString()
-  // //     .split("")
-  // //     .map((number) => {
-  // //       return Number(number);
-  // //     });
-
-  // upArray.pop();
-  // return upArray;
 };
-
-// console.log(upArray([0, 4, 3, 2, 0]));
 console.log(
-  upArray([1, 2, 3, 4, 5, 6, 7, 8, 9, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 0])
+  upArray([
+    0, 7, 1, 5, 7, 5, 1, 1, 0, 7, 2, 4, 3, 5, 4, 7, 3, 7, 1, 5, 2, 3, 9, 1, 5,
+    6, 7, 0, 4, 6, 2, 0,
+  ])
 );
-// console.log(upArray([0, 7])) // Should return 08
-// console.log(
-//   upArray([1, 2, 3, 4, 5, 6, 7, 8, 9, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 0])
-// );
-// console.log(upArray([1, -9])); //Should return null
-// console.log(upArray([1, 10])); // should return null
-// console.log(parseInt("12345678901234567890", 10)); // WHY IS THIS 12345678901234567000 ?
