@@ -11,7 +11,9 @@ Vowel-consonant lexicon
 */
 
 const longestVowelChain = (string) => {
+  let vowel = false;
   let max = 0;
+  let next = 0;
   let vowelMap = {
     a: "a",
     e: "e",
@@ -19,11 +21,8 @@ const longestVowelChain = (string) => {
     i: "i",
     u: "u",
   };
-  for (let i = 0; i < string.length; i++) {
-    if (vowelMap[string[i]] !== undefined) {
-      console.log("Vowel!");
-    }
-  }
+  for (let i = 0; i < string.length; i++) {}
+  return max;
 };
 
 console.log(longestVowelChain("codewarriors"));
