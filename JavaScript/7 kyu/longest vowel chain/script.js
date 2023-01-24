@@ -21,8 +21,22 @@ const longestVowelChain = (string) => {
     i: "i",
     u: "u",
   };
-  for (let i = 0; i < string.length; i++) {}
+  for (let i = 0; i < string.length; i++) {
+    if (vowelMap[string[i]] !== undefined) {
+      if (max === 0) {
+        max++;
+      }
+      console.log("Thats a vowel dog!");
+      for (let j = i + 1; j < string.length; j++) {
+        if (vowelMap[string[j]] !== undefined) {
+          max++;
+        } else {
+          break;
+        }
+      }
+    }
+  }
   return max;
 };
 
-console.log(longestVowelChain("codewarriors"));
+console.log(longestVowelChain("ultrarevolutionariees"));
