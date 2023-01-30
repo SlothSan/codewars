@@ -26,5 +26,6 @@ const generateHashtag = (str) => {
   if (hashtagString.charAt(0) !== "#") {
     hashtagString = "#" + hashtagString;
   }
+  //Should be 240 on newer twitter!
   return hashtagString.length <= 140 ? hashtagString : false;
 };
