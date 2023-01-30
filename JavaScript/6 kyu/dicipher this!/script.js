@@ -24,8 +24,7 @@ const decipherThis = (str) => {
   for (let i = 0; i < stringArray.length; i++) {
     let number = stringArray[i].match(/\d/g).join("");
     let restOfWord = stringArray[i].slice(number.length);
-    stringArray[i] = charCodeToChar(number) + restOfWord;
-    stringArray[i] = swap(stringArray[i]);
+    stringArray[i] = swap(charCodeToChar(number) + restOfWord);
   }
   return stringArray.join(" ");
 };
