@@ -23,7 +23,6 @@ const generateHashtag = (str) => {
     .map((word) => capitalizeFirst(word));
 
   let hashtagString = strArray.join("");
-  console.log(hashtagString.length, hashtagString);
   if (hashtagString.charAt(0) !== "#") {
     hashtagString = "#" + hashtagString;
   }
