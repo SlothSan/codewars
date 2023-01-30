@@ -27,28 +27,21 @@ If a or b are nil (or null or None, depending on the language), the problem does
 Note for C
 The two arrays have the same size (> 0) given as parameter in function comp.*/
 
+//failing malformed and small arrays.
+//[2,2,3],[4,9,9] - problem with all of these
 const comp = (array1, array2) => {
-  console.log("Array1: ", array1);
-  console.log("Array2: ", array2);
-  let compTrue = true;
-  //get squares in array1 to compare to array2
-  array1 = array1.map((number) => {
-    return number * number;
-  });
-  console.log(array1);
-  for (let i = 0; i < array1.length; i++) {
-    let needle = array2[i];
-    if (!array1.includes(needle)) {
-      compTrue = false;
-    }
-    if (!compTrue) return false;
-  }
-  return compTrue;
+  if (!array1 || !array2 || array1.length !== array2.length) return false;
+  return (
+    array1
+      .map((number) => number * number)
+      .sort()
+      .toString() == array2.sort().toString()
+  );
 };
 
 console.log(
   comp(
     [121, 144, 19, 161, 19, 144, 19, 11],
-    [121, 14641, 20736, 36100, 25921, 361, 20736, 361]
+    [121, 14641, 20736, 361, 25921, 361, 20736, 361]
   )
 );
