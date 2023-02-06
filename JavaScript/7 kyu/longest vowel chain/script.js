@@ -8,38 +8,8 @@ If you like substring Katas, please try:
 Non-even substrings
 
 Vowel-consonant lexicon
-*/
+ */
 
-const longestVowelChain = (string) => {
-  let max = 0;
-  let count = 1;
-  let vowelMap = {
-    a: "a",
-    e: "e",
-    o: "o",
-    i: "i",
-    u: "u",
-  };
-  for (let i = 0; i < string.length; i++) {
-    if (vowelMap[string[i]] !== undefined) {
-      if (max === 0) {
-        max++;
-      }
-      for (let j = i + 1; j < string.length; j++) {
-        if (vowelMap[string[j]] !== undefined) {
-          console.log(vowelMap[string[j]]);
-          count++;
-        } else {
-          if (count >= max) {
-            max = count;
-            count = 1;
-          }
-          break;
-        }
-      }
-    }
-  }
-  return max;
-};
+const solve = (string) => {};
 
-console.log(longestVowelChain("ultrarevolutionariees"));
+console.log(solve("codewarriors")); //expectec output 2
