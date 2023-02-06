@@ -10,6 +10,24 @@ Non-even substrings
 Vowel-consonant lexicon
  */
 
-const solve = (string) => {};
+const solve = (string) => {
+  let vowelRegex = /[aeiou]/,
+    current = 0,
+    max = 0;
+  //loop through each char and if a vowel increment the current
+  //if curr  > max  max = curr
+  //else if not a vowel set current back to 0;
+  for (let i = 0; i < string.length; i++) {
+    if (vowelRegex.test(string[i])) {
+      current++;
+      if (current > max) {
+        max = current;
+      }
+    } else {
+      current = 0;
+    }
+  }
+  return max;
+};
 
 console.log(solve("codewarriors")); //expectec output 2
