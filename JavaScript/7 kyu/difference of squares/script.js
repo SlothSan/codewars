@@ -17,11 +17,24 @@ The sum of the squares of the numbers is:
 Hence the difference between square of the sum of the first ten natural numbers and the sum of the squares of those numbes is: 3025 - 385 = 2640 */
 
 const differenceOfSquares = (number) => {
-    //get sum of 1 and N and square it
+  const start = 1;
+  //get sum of 1 and N and square it
+  let numberArray = [...Array(number - 1 + 1).keys()].map((x) => x + 1);
+  let sumSquared = Math.pow(
+    numberArray.reduce(
+      (accumlator, currentValue) => accumlator + currentValue,
+      0
+    ),
+    2
+  );
+  //get sum of each number between 1 and N sqaured
+  let eachSquaredSum = numberArray
+    .map((number) => Math.pow(number, 2))
+    .reduce((accumlator, currentValue) => accumlator + currentValue, 0);
+  console.log(eachSquaredSum);
 
-    //get sum of each number between 1 and N sqaured
+  //return difference between sum of each squard and sum squared
+  return sumSquared - eachSquaredSum;
+};
 
-    //return difference between sum of each squard and sum squared
-}
-
-console.log(differenceOfSquares(5)) //expect 170
+console.log(differenceOfSquares(5)); //expect 170
