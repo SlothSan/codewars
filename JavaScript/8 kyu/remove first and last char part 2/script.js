@@ -18,9 +18,7 @@ Examples
 */
 
 const array = (arr) => {
-  let result = arr.split(",").slice(1, -1).join(" ");
-  if (result === "") return null;
-  return result;
+  return arr.split(",").slice(1, -1).join(" ") || null;
 };
 
-console.log(array("1,2,3")); //Expect 2
+console.log(array("1,2")); //Expect 2
