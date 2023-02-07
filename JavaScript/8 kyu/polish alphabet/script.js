@@ -33,9 +33,7 @@ const correctPolishLetters = (string) => {
   };
   return string
     .split("")
-    .map((letter) =>
-      polishMap[letter] !== undefined ? polishMap[letter] : letter
-    )
+    .map((letter) => (polishMap[letter] ? polishMap[letter] : letter))
     .join("");
 };
 
