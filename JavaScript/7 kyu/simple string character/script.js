@@ -8,10 +8,21 @@ More examples in the test cases.
 Good luck!
 */
 
-const solve = (s) => {};
+const count = (regex, string) => {
+  return ((string || "").match(regex) || []).length;
+};
 
-console.log(solve(""), [0, 0, 0, 0]);
-console.log(solve("aAbBcC"), [3, 3, 0, 0]);
-console.log(solve("Codewars@codewars123.com"), [1, 18, 3, 2]);
-console.log(solve("bgA5<1d-tOwUZTS8yQ"), [7, 6, 3, 2]);
-console.log(solve("P*K4%>mQUDaG$h=cx2?.Czt7!Zn16p@5H"), [9, 9, 6, 9]);
+const solve = (string) => {
+  return [
+    count(/([A-Z])/g, string),
+    count(/([a-z])/g, string),
+    count(/([0-9])/g, string),
+    count(/([^A-Za-z0-9])/g, string),
+  ];
+};
+
+console.log(solve(""));
+console.log(solve("aAbBcC"));
+console.log(solve("Codewars@codewars123.com"));
+console.log(solve("bgA5<1d-tOwUZTS8yQ"));
+console.log(solve("P*K4%>mQUDaG$h=cx2?.Czt7!Zn16p@5H"));
