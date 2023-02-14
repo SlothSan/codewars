@@ -21,8 +21,35 @@ Example of a string rotated to the left by one position:
 s = "123456" gives "234561".
 */
 
+const generateRegex = (size) => {
+  return new RegExp(`.{${size}}`, "g");
+};
+
+const reverseString = (string) => {
+  return string.split("").reverse().join("");
+};
+
+const rotateString = (string) => {
+  string = string.split("");
+  string.push(string.shift());
+  return string.join("");
+};
+
 const revrot = (string, size) => {
+  let regex = generateRegex(size);
+  let array = string.match(regex) || [];
+  for (let i = 0; i < array.length; i++) {
+    let currentSum = array[i]
+      .split("")
+      .reduce((accum, current) => accum + Math.pow(current, 3), 0);
 
-}
+    if (currentSum % 2 === 0) {
+      array[i] = reverseString(array[i]);
+    } else {
+      array[i] = rotateString(array[i]);
+    }
+  }
+  return array.join("");
+};
 
-console.log(revrot('733049910872815764', 5))
+console.log(revrot("66443875", 4)); //44668753
