@@ -41,6 +41,24 @@ const nbMonths = (
   startPriceNew,
   savingperMonth,
   percentLossByMonth
-) => {};
+) => {
+  if (startPriceOld >= startPriceNew) {
+    return [0, Math.round(startPriceOld - startPriceNew)];
+  }
+  let currentBalance = startPriceOld;
+  let months = 0;
+  while (currentBalance < startPriceNew) {
+    currentBalance += savingperMonth;
+    currentBalance -= (startPriceOld * percentLossByMonth) / 100;
+
+    startPriceOld -= (startPriceOld * percentLossByMonth) / 100;
+    startPriceNew -= (startPriceNew * percentLossByMonth) / 100;
+
+    months++;
+
+    months % 2 !== 0 ? (percentLossByMonth += 0.5) : percentLossByMonth;
+  }
+  return [months, Math.round(currentBalance - startPriceNew)];
+};
 
 console.log(nbMonths(2000, 8000, 1000, 1.5)); //Expect [6, 766]
