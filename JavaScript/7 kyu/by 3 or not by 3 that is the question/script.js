@@ -26,5 +26,4 @@ const divisibleByThree = (string) => {
 
 console.log(divisibleByThree("123")); //true
 console.log(divisibleByThree("88")); // false
-
 console.log(divisibleByThree("9876543211234567890009")); //true
