@@ -11,7 +11,7 @@ Note that the phrase can also be written as "3.50" or "three fifty". Your functi
 */
 
 const isLockNessMonster = (string) => {
-  return /tree fiddy|3.50|three fifty/.test(string);
+  return /tree fiddy|3\.50|three fifty/.test(string);
 };
 
 console.log(
