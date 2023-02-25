@@ -17,12 +17,16 @@ Any input that is NOT a letter should be treated as if it is not there. For exam
 (Thanks to wthit56 for the suggestion!)
 */
 const createRegex = (input) => {
-  return new RegExp(`^[${input}]/\w`, "g");
+  return new RegExp(`^${input}`, "i");
 };
 
 const autocomplete = (input, dictionary) => {
-  console.log(createRegex(input));
-  return createRegex(input);
+  input = input.replace(/[^A-Za-z]+/g);
+  let regex = createRegex(input);
+  let temp = dictionary.filter((word) => {
+    return regex.test(word) ? word : null;
+  });
+  return temp.length < 6 ? temp : temp.slice(0, 5);
 };
 
 console.log(autocomplete("ai", ["airplane", "airport", "apple", "ball"])); //['airplane', 'airport']
