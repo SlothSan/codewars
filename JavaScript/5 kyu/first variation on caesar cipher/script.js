@@ -40,14 +40,98 @@ Caesar Cipher : http://en.wikipedia.org/wiki/Caesar_cipher
 */
 
 const movingShift = (s, shift) => {
-    //only shift a-zA-Z 
-    //shift increments by 1 on each iteration (each character that is changing)
-    //first change the whole string with the above rules. 
-    //
+  let length = s.length;
+  let fLength, sLength;
+  for (let i = Math.floor(length / 4); i > 0; i--) {
+    fLength = length - 4 * i;
+    if (fLength > i) {
+      sLength = i + 1;
+      break;
+    }
+  }
+  fLength = length - 4 * sLength;
+  let str = "",
+    result = [];
+  for (let i = 0; i < length; i++) {
+    if (
+      (s[i].charCodeAt() >= 65 && s[i].charCodeAt() <= 90) ||
+      (s[i].charCodeAt() >= 97 && s[i].charCodeAt() <= 122)
+    ) {
+      let value = s[i].charCodeAt() + shift + i;
+      if (s[i].charCodeAt() >= 65 && s[i].charCodeAt() <= 90 && value > 90) {
+        let rest = Math.floor((value - 65) / 26);
+        str += String.fromCharCode(value - rest * 26);
+      } else if (
+        s[i].charCodeAt() >= 97 &&
+        s[i].charCodeAt() <= 122 &&
+        value > 122
+      ) {
+        let rest = Math.floor((value - 97) / 26);
+        str += String.fromCharCode(value - rest * 26);
+      } else {
+        str += String.fromCharCode(value);
+      }
+    } else {
+      str += s[i];
+    }
+  }
+  for (let k = 0; k < 4; k++) {
+    result.push(str.slice(sLength * k, sLength * (k + 1)));
+  }
+  result.push(str.slice(sLength * 4));
+  return result;
+};
 
+const demovingShift = (arr, shift) => {
+  let str = "";
+  let step = 0;
+  for (let i = 0; i < arr.length; i++) {
+    for (let j = 0; j < arr[i].length; j++) {
+      if (
+        (arr[i][j].charCodeAt() >= 65 && arr[i][j].charCodeAt() <= 90) ||
+        (arr[i][j].charCodeAt() >= 97 && arr[i][j].charCodeAt() <= 122)
+      ) {
+        let value = arr[i][j].charCodeAt() - shift - step;
+        if (
+          arr[i][j].charCodeAt() >= 65 &&
+          arr[i][j].charCodeAt() <= 90 &&
+          value < 65
+        ) {
+          let rest = Math.ceil((65 - value) / 26);
+          str += String.fromCharCode(value + rest * 26);
+        } else if (
+          arr[i][j].charCodeAt() >= 97 &&
+          arr[i][j].charCodeAt() <= 122 &&
+          value < 97
+        ) {
+          let rest = Math.ceil((97 - value) / 26);
+          str += String.fromCharCode(value + rest * 26);
+        } else {
+          str += String.fromCharCode(value);
+        }
+        step++;
+      } else {
+        str += arr[i][j];
+        step++;
+      }
+    }
+  }
+  return str;
 };
 
 let string =
   "I should have known that you would have a perfect answer for me!!!";
 
 console.log(movingShift(string, 1)); //"[J vltasl rlhr ", "zdfog odxr ypw", " atasl rlhr p ", "gwkzzyq zntyhv", " lvz wp!!!]"
+console.log(
+  demovingShift(
+    [
+      "J vltasl rlhr ",
+      "zdfog odxr ypw",
+      " atasl rlhr p ",
+      "gwkzzyq zntyhv",
+      " lvz wp!!!",
+    ],
+    1
+  )
+); //I should have known that you would have a perfect answer for me!!!
