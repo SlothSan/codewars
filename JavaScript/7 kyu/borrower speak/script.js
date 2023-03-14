@@ -8,7 +8,7 @@ The young borrowers have begged their parents to stop using caps and punctuation
 Change the input text s to new borrower speak. Help save the next generation!
 */
 const borrow = (s) => {
-  return s.toLowerCase().replaceAll(/[.\s,\/#!?$%\^&\*;:{}=\-_`~()]/g, "");
+  return s.toLowerCase().replaceAll(/\W/g, "");
 };
 
-console.log(borrow("What The Actual Fuck!")); //whattheactualfuck
+console.log(borrow("What The Actual Fuck!")); //whattheactualfucks
