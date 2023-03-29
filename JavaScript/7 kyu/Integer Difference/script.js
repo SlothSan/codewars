@@ -10,15 +10,13 @@ For example:
 */
 
 const intDiff = (arr, n) => {
-  let matches = [];
+  let matches = 0;
   for (let i = 0; i < arr.length; i++) {
-    let current = arr[i];
     for (let j = i + 1; j < arr.length; j++) {
-      let nextCurrent = arr[j];
-      if (Math.abs(current - nextCurrent) === n) matches.push(nextCurrent);
+      if (Math.abs(arr[i] - arr[j]) === n) matches++;
     }
   }
-  return matches.length;
+  return matches;
 };
 
 console.log(intDiff([1, 1, 5, 6, 9, 16, 27], 4)); //3
