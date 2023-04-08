@@ -21,14 +21,12 @@ Note: You will always receive matrices of the same dimension.
 */
 
 const diagonal = (matrix) => {
-  let principalDiagonal = [],
-    secondaryDiagonal = [];
+  let principalDiagonal = 0,
+    secondaryDiagonal = 0;
   for (let i = 0; i < matrix.length; i++) {
-    principalDiagonal.push(matrix[i][i]);
-    secondaryDiagonal.push(matrix[i][matrix.length - 1 - i]);
+    principalDiagonal += matrix[i][i];
+    secondaryDiagonal += matrix[i][matrix.length - 1 - i];
   }
-  principalDiagonal = principalDiagonal.reduce((acc, curr) => acc + curr, 0);
-  secondaryDiagonal = secondaryDiagonal.reduce((acc, curr) => acc + curr, 0);
   return principalDiagonal > secondaryDiagonal
     ? "Principal Diagonal win!"
     : secondaryDiagonal > principalDiagonal
