@@ -21,7 +21,6 @@ const rotateString = (string) => {
 
 const rotate = (str) => {
   let rotates = [];
-  rotates.push(str);
   for (let i = rotates.length; i < str.length; i++) {
     str = rotateString(str);
     rotates.push(str);
