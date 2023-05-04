@@ -33,8 +33,7 @@ const avgArray = (arr) => {
     for (let j = 0; j < arr.length; j++) {
       total += arr[j][i];
     }
-    const avg = total / arr.length;
-    averages.push(avg);
+    averages.push(total / arr.length);
   }
   return averages;
 };
