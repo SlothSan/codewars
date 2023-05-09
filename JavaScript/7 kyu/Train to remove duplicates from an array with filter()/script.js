@@ -18,7 +18,6 @@ var arr = [1,1,1,2,2,3];
 unique(arr); // should return [1,2,3]
 */
 
-const unique = (arr) =>
-  arr.filter((element, index) => arr.lastIndexOf(element) === index);
+const unique = (arr) => arr.filter((num, index) => index === arr.indexOf(num));
 
 console.log(unique([1, 2, 2, 3])); //[ 1, 2, 3 ]
