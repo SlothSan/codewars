@@ -5,16 +5,15 @@ moveZeros([false,1,0,1,2,0,1,3,"a"]) // returns[false,1,1,2,1,3,"a",0,0]
 */
 
 const moveZeros = (arr) => {
-  let zeros = [];
-  let nonZeros = [];
-  for (let i = 0; i < arr.length; i++) {
-    if (arr[i] === 0) {
-      zeros.push(arr[i]);
-    } else {
-      nonZeros.push(arr[i]);
-    }
-  }
-  return nonZeros.concat(zeros);
+  return arr
+    .filter(function (x) {
+      return x !== 0;
+    })
+    .concat(
+      arr.filter(function (x) {
+        return x === 0;
+      })
+    );
 };
 
 console.log(moveZeros([1, 2, 0, 1, 0, 1, 0, 3, 0, 1]));
