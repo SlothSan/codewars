@@ -9,17 +9,13 @@ If a string contains all repeating characters, it should return an empty string 
 */
 
 const firstNonRepeatingLetter = (s) => {
-  const charCount = {};
-  const lowerCaseStr = s.toLowerCase();
-  for (let i = 0; i < lowerCaseStr.length; i++) {
-    const char = lowerCaseStr[i];
-    charCount[char] = charCount[char] ? charCount[char] + 1 : 1;
-  }
-  for (let i = 0; i < s.length; i++) {
-    const char = s[i];
-    if (charCount[lowerCaseStr[i]] === 1) {
-      return char;
-    }
+  let lowerCaseString = s.toLowerCase();
+  for (let i = 0; i < lowerCaseString.length; i++) {
+    if (
+      lowerCaseString.indexOf(lowerCaseString[i]) ===
+      lowerCaseString.lastIndexOf(lowerCaseString[i])
+    )
+      return s[i];
   }
   return "";
 };
