@@ -13,5 +13,4 @@ For example (Input --> Output):
 const twoOldestAges = (ages) =>
   ages.sort((a, b) => a - b).slice(ages.length - 2);
 
-
-console.log(twoOldestAges([1,2,3,4,5]))
+console.log(twoOldestAges([1, 2, 3, 4, 5])); //[4, 5]
