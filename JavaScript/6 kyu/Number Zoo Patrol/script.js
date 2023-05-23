@@ -20,7 +20,7 @@ Examples:
 const findNumber = (array) => {
   const n = array.length + 1;
   const totalSum = (n * (n + 1)) / 2;
-  return totalSum - (sum = array.reduce((acc, num) => acc + num, 0));
+  return totalSum - array.reduce((acc, num) => acc + num, 0);
 };
 
 console.log(findNumber([13, 11, 10, 3, 2, 1, 4, 5, 6, 9, 7, 8])); //12
