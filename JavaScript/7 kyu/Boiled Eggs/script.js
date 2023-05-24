@@ -15,13 +15,6 @@ Example (Input --> Output)
 10 --> 10
 */
 
-const cookingTime = (eggs) => {
-  let time = 0;
-  while (eggs > 0) {
-    time += 5;
-    eggs -= 8;
-  }
-  return time;
-};
+const cookingTime = (eggs) => 5 * Math.ceil(eggs / 8);
 
 console.log(cookingTime(10));
