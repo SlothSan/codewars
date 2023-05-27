@@ -17,7 +17,6 @@ An array (guaranteed non-associative in PHP) representing the genders of the att
 true if Arthur need to invite more women, false otherwise.
 */
 
-const inviteMoreWomen = (L) =>
-  L.reduce((acc, curr) => acc + curr, 0) >= 1 ? true : false;
+const inviteMoreWomen = (L) => L.reduce((acc, curr) => acc + curr, 0) > 0;
 
 console.log(inviteMoreWomen([1, -1, 1])); //True
