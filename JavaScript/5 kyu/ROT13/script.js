@@ -16,26 +16,21 @@ Test examples:
 
 const rot13 = (str) => {
   return str
-    .split(" ")
-    .map((word) => {
-      return word
-        .split("")
-        .map((letter) => {
-          if (/[A-Za-z]/.test(letter)) {
-            const isUpper = /[A-Z]/.test(letter);
-            const charCode = letter.charCodeAt(0);
-            return String.fromCharCode(
-              isUpper
-                ? ((charCode - 65 + 13) % 26) + 65
-                : ((charCode - 97 + 13) % 26) + 97
-            );
-          } else {
-            return letter;
-          }
-        })
-        .join("");
+    .split("")
+    .map((letter) => {
+      if (/[A-Za-z]/.test(letter)) {
+        const isUpper = /[A-Z]/.test(letter);
+        const charCode = letter.charCodeAt(0);
+        return String.fromCharCode(
+          isUpper
+            ? ((charCode - 65 + 13) % 26) + 65
+            : ((charCode - 97 + 13) % 26) + 97
+        );
+      } else {
+        return letter;
+      }
     })
-    .join(" ");
+    .join("");
 };
 
 console.log(rot13("EBG13 rknzcyr.")); //ROT13 example.
