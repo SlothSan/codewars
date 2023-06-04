@@ -21,26 +21,13 @@ The states must be ordered by first appearance.
 An error is expected if an input object doesn't have a state property.
 */
 
-const count = (addresses) => {
-  let counts = {};
-  addresses.forEach((address) => {
-    if (!address.state) {
-      throw new Error("Input object doesn't have a state property");
-    }
-    if (counts[address.state]) {
-      counts[address.state]++;
-    } else {
-      counts[address.state] = 1;
-    }
-  });
-  let result = [];
-  for (let state in counts) {
-    result.push({
-      state: state,
-      count: counts[state],
-    });
-  }
-  return result;
+const count = (addres) => {
+  const states = addres.reduce((obj, { state }) => {
+    if (!state) throw new Error();
+    obj[state] = (obj[state] || 0) + 1;
+    return obj;
+  }, {});
+  return Object.keys(states).map((state) => ({ state, count: states[state] }));
 };
 
 console.log(
