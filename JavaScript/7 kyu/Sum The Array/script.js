@@ -11,10 +11,7 @@ arr.sum(); //returns 85
 Good luck!
 */
 Array.prototype.sum = function () {
-  if (this.length === 0) {
-    return 0;
-  }
-  return this.reduce((total, current) => total + current);
+  return this.reduce((a, b) => a + b, 0);
 };
 
 console.log([1, 2, 3, 4, 5, 6].sum()); //21
