@@ -26,7 +26,7 @@ if a result in seconds is ab.xy... it will be given truncated as ab.
 if the given string is "" you will return ""
 */
 
-function stat(strg) {
+const stat = (strg) => {
   if (!strg) return "";
   const times = strg.split(", ");
   const seconds = times.map((time) => {
@@ -56,7 +56,7 @@ function stat(strg) {
   return `Range: ${formatTime(range)} Average: ${formatTime(
     average
   )} Median: ${formatTime(median)}`;
-}
+};
 
 console.log(
   stat("02|15|59, 2|47|16, 02|17|20, 2|32|34, 2|17|17, 2|22|00, 2|31|41")
