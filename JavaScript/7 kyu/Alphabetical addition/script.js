@@ -16,7 +16,7 @@ addLetters('y', 'c', 'b') = 'd' // notice the letters overflowing
 addLetters() = 'z'
 */
 
-function addLetters(...letters) {
+const addLetters = (...letters) => {
   if (letters.length === 0) {
     return "z";
   }
@@ -26,4 +26,4 @@ function addLetters(...letters) {
     sum -= 26;
   }
   return String.fromCharCode(sum + 96);
-}
+};
