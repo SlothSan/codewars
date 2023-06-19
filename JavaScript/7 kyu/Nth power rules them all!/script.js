@@ -9,7 +9,7 @@ Examples
 */
 
 const modifiedSum = (a, n) =>
-  a.reduce((acc, curr) => acc + curr ** n) -
+  a.reduce((acc, curr) => acc + Math.pow(curr, n), 0) -
   a.reduce((acc, curr) => acc + curr, 0);
 
 console.log(modifiedSum([1, 2, 3], 3)); //30
