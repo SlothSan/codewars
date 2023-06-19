@@ -11,29 +11,11 @@ Examples
 */
 
 const whatCentury = (year) => {
-  let century = Math.ceil(parseInt(year) / 100);
-  let suffix = "";
-
-  if (century >= 11 && century <= 13) {
-    suffix = "th";
-  } else {
-    let lastDigit = century % 10;
-    switch (lastDigit) {
-      case 1:
-        suffix = "st";
-        break;
-      case 2:
-        suffix = "nd";
-        break;
-      case 3:
-        suffix = "rd";
-        break;
-      default:
-        suffix = "th";
-    }
-  }
-
-  return century + suffix;
+  let century = Math.ceil(year / 100);
+  return (
+    century +
+    (century < 20 ? "th" : ["th", "st", "nd", "rd"][century % 10] || "th")
+  );
 };
 
 console.log(whatCentury("2259")); //23rd
