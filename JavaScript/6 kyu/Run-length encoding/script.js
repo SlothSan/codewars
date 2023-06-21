@@ -16,20 +16,20 @@ runLengthEncoding("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaabbb")
 */
 
 const runLengthEncoding = (str) => {
-  let result = [];
-  let counter = 1;
+  let arr = [],
+    counter = 1;
 
-  for (let i = 1; i < str.length; i++) {
+  for (let i = 0; i < str.length; i++) {
     if (str[i] === str[i + 1]) {
       counter++;
     } else {
-      result.push([counter, str[i]]);
+      arr.push([counter, str[i]]);
       counter = 1;
     }
   }
-  return result;
-};
 
+  return arr;
+};
 console.log(
   runLengthEncoding(
     "WWWWWWWWWWWWBWWWWWWWWWWWWBBBWWWWWWWWWWWWWWWWWWWWWWWWBWWWWWWWWWWWWWW"
