@@ -17,23 +17,16 @@ runLengthEncoding("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaabbb")
 
 const runLengthEncoding = (str) => {
   let result = [];
-  if (!str) return result;
-
-  let count = 1;
-  let prevChar = str[0];
+  let counter = 1;
 
   for (let i = 1; i < str.length; i++) {
-    if (str[i] === prevChar) {
-      count++;
+    if (str[i] === str[i + 1]) {
+      counter++;
     } else {
-      result.push([count, prevChar]);
-      count = 1;
-      prevChar = str[i];
+      result.push([counter, str[i]]);
+      counter = 1;
     }
   }
-
-  result.push([count, prevChar]);
-
   return result;
 };
 
