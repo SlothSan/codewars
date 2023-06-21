@@ -16,21 +16,11 @@ Note: Assume that all values in the list are positive integer values > 0 and eac
 */
 
 const sumFactorial = (arr) => {
-  let result = 0;
-  arr.map((num) => {
-    result += factorialize(num);
-  });
-  return result;
+  return arr.reduce((acc, curr) => acc + factorialize(curr), 0);
 };
 
 const factorialize = (num) => {
-  if (num < 0) {
-    return -1;
-  } else if (num === 0) {
-    return 1;
-  } else {
-    return num * factorialize(num - 1);
-  }
+  return num === 1 ? 1 : num * factorialize(num - 1);
 };
 
 console.log(sumFactorial([4, 10])); //3628824
