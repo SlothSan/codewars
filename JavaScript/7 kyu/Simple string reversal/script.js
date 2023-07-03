@@ -21,24 +21,12 @@ Simple remove duplicates
 */
 
 const solve = (str) => {
-  const arr = str.split("");
-  const result = Array(arr.length);
-  for (let i = 0; i < arr.length; i++) {
-    if (arr[i] === " ") {
-      result[i] = " "; // Keep the space at its original index
-    }
+  let s = "";
+  for (let i = str.length - 1; i >= 0; i--) {
+    if (str[i] != " ") s += str[i];
+    if (str[s.length] == " ") s += str[s.length];
   }
-  let j = result.length - 1;
-  for (let i = 0; i < arr.length; i++) {
-    if (arr[i] !== " ") {
-      while (result[j] !== undefined) {
-        j--;
-      }
-      result[j] = arr[i];
-    }
-  }
-
-  return result.join("");
+  return s;
 };
 
 console.log(solve("I love rockpool digital")); //l atig idloopkc orevolI
