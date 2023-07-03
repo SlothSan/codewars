@@ -6,32 +6,25 @@ You are given a string of numbers between 0-9. Find the average of these numbers
 If the string is empty or includes a number greater than 9, return "n/a"
 */
 
+const numbers = [
+  "zero",
+  "one",
+  "two",
+  "three",
+  "four",
+  "five",
+  "six",
+  "seven",
+  "eight",
+  "nine",
+];
+
 const averageString = (str) => {
-  if (!str) return "n/a";
-  const numberWords = [
-    "zero",
-    "one",
-    "two",
-    "three",
-    "four",
-    "five",
-    "six",
-    "seven",
-    "eight",
-    "nine",
-  ];
-  const numbers = str.trim().split(" ");
-  for (let i = 0; i < numbers.length; i++) {
-    if (!numberWords.includes(numbers[i])) {
-      return "n/a";
-    }
-  }
-  const total = numbers.reduce((sum, number) => {
-    const numericValue = numberWords.indexOf(number);
-    return sum + numericValue;
-  }, 0);
-  const average = Math.floor(total / numbers.length);
-  return numberWords[average];
+  const nums = str.split(" ").map((v) => numbers.indexOf(v));
+  if (nums.includes(-1)) return "n/a";
+  const sum = nums.reduce((prev, cur) => prev + cur);
+  const average = Math.floor(sum / nums.length);
+  return numbers[average];
 };
 
 console.log(averageString("zero nine five two"));
