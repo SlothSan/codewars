@@ -8,16 +8,8 @@ sumOfABeach("gOfIshsunesunFiSh")             ==>  4
 sumOfABeach("cItYTowNcARShoW")               ==>  0
 */
 
-const sumOfABeach = (beach) => {
-  let count = 0;
-  const targets = ["sand", "water", "fish", "sun"];
-  beach = beach.toLowerCase();
-  targets.forEach((word) => {
-    let regexp = new RegExp(word, "g");
-    count += (beach.match(regexp) || []).length;
-  });
-  return count;
-};
+const sumOfABeach = (beach) =>
+  (beach.match(/sand|water|fish|sun/gi) || []).length;
 
 console.log(
   sumOfABeach(
