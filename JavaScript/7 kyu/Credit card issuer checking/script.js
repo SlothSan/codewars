@@ -22,12 +22,12 @@ getIssuer(9111111111111111) == "Unknown"
 
 const getIssuer = (number) => {
   const cardInfo = [
-    { issuer: "AMEX", prefix: ["34", "37"], length: 15 },
-    { issuer: "Discover", prefix: ["6011"], length: 16 },
+    { issuer: "AMEX", prefix: ["34", "37"], length: [15] },
+    { issuer: "Discover", prefix: ["6011"], length: [16] },
     {
       issuer: "Mastercard",
       prefix: ["51", "52", "53", "54", "55"],
-      length: 16,
+      length: [16],
     },
     { issuer: "VISA", prefix: ["4"], length: [13, 16] },
   ];
@@ -47,4 +47,4 @@ const getIssuer = (number) => {
   return "Unknown";
 };
 
-console.log(getIssuer(378282246310005)); //AMEX
+console.log(getIssuer(4111111111111111)); //AMEX
