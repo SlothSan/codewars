@@ -37,8 +37,7 @@ const getIssuer = (number) => {
   for (const info of cardInfo) {
     if (
       info.prefix.some((prefix) => numberStr.startsWith(prefix)) &&
-      (info.length === numberStr.length ||
-        info.length.includes(numberStr.length))
+      info.length.includes(numberStr.length)
     ) {
       return info.issuer;
     }
