@@ -10,20 +10,10 @@ getQuote(["I am vengeance. I am the night. I am Batman!", "Holy haberdashery, Ba
 Hint: You are guaranteed that the number in the passed in string is placed somewhere after the first character of the string. The quotes either belong to "Batman", "Robin", or "Joker".
 */
 
-const getQuote = (quotes, hero) => {
-  const name = hero.replace(/[0-9]/g, "");
-  const quoteIndex = parseInt(hero.replace(/[^\d]/g, ""));
-  let character = "";
-  if (name.toLowerCase().includes("bat")) {
-    character = "Batman";
-  } else if (name.toLowerCase().includes("rob")) {
-    character = "Robin";
-  } else if (name.toLowerCase().includes("jok")) {
-    character = "Joker";
-  }
-
-  return `${character}: ${quotes[quoteIndex]}`;
-};
+const getQuote = (quotes, hero) =>
+  ({ R: "Robin", J: "Joker", B: "Batman" }[hero[0]] +
+  ": " +
+  quotes[hero.match(/\d+/)[0]]);
 
 let quotes = [
   "WHERE IS SHE?!",
