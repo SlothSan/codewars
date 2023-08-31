@@ -12,27 +12,15 @@ But for a change, let"s do that for each and every word of the given String. You
 Note: you will be provided atleast one word and should take string as input and return string as output.
 */
 
-const dropCap = (n) => {
-  return n
+const dropCap = (n) =>
+  n
     .split(" ")
-    .map((word) => {
-      if (word.length > 2) {
-        return word
-          .split("")
-          .map((letter, index) => {
-            if (index === 0) {
-              return letter.toUpperCase();
-            } else {
-              return letter.toLowerCase();
-            }
-          })
-          .join("");
-      } else {
-        return word;
-      }
-    })
+    .map((word) =>
+      word.length > 2 && word !== ""
+        ? word[0].toUpperCase() + word.slice(1).toLowerCase()
+        : word
+    )
     .join(" ");
-};
 
 console.log(
   dropCap(
