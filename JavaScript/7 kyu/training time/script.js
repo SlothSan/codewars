@@ -156,12 +156,8 @@ shuffleIt([1,2,3,4,5],[1,2],[3,4],[2,3]) should return [1,3,5,2,4]
 */
 
 const shuffleIt = (arr, ...nums) => {
-  nums.map((pair) => {
-    let currentFirst = arr[pair[0]];
-    let currentSecond = arr[pair[1]];
-    arr[pair[0]] = currentSecond;
-    arr[pair[1]] = currentFirst;
-  });
+  for ([first, second] of nums)
+    [arr[first], arr[second]] = [arr[second], arr[first]];
   return arr;
 };
 
