@@ -24,20 +24,29 @@ For everything else, don't return anything (return null in C#, None in Rust).
 */
 
 const HQ9 = (input) => {
-    if (input === 'H') {
-      return 'Hello World!';
-    } else if (input === 'Q') {
-      return input;
-    } else if (input === '9') {
-      let lyrics = '';
-      for (let bottles = 99; bottles > 0; bottles--) {
-        lyrics += `${bottles} bottle${bottles !== 1 ? 's' : ''} of beer on the wall, ${bottles} bottle${bottles !== 1 ? 's' : ''} of beer.\n`;
-        lyrics += `Take one down and pass it around, ${bottles - 1 === 0 ? 'no more' : bottles - 1} bottle${bottles - 1 !== 1 ? 's' : ''} of beer on the wall.\n`;
-      }
-      lyrics += 'No more bottles of beer on the wall, no more bottles of beer.\n';
-      lyrics += 'Go to the store and buy some more, 99 bottles of beer on the wall.';
-      return lyrics;
-    } else {
-      return undefined;
+  if (input === "H") {
+    return "Hello World!";
+  } else if (input === "Q") {
+    return input;
+  } else if (input === "9") {
+    let lyrics = "";
+    for (let bottles = 99; bottles > 0; bottles--) {
+      lyrics += `${bottles} bottle${
+        bottles !== 1 ? "s" : ""
+      } of beer on the wall, ${bottles} bottle${
+        bottles !== 1 ? "s" : ""
+      } of beer.\n`;
+      lyrics += `Take one down and pass it around, ${
+        bottles - 1 === 0 ? "no more" : bottles - 1
+      } bottle${bottles - 1 !== 1 ? "s" : ""} of beer on the wall.\n`;
     }
+    lyrics += "No more bottles of beer on the wall, no more bottles of beer.\n";
+    lyrics +=
+      "Go to the store and buy some more, 99 bottles of beer on the wall.";
+    return lyrics;
+  } else {
+    return undefined;
   }
+};
+
+console.log(HQ9("9"));
