@@ -17,30 +17,9 @@ Examples
 */
 
 const uncollapse = (digits) => {
-  const digitDictionary = {
-    zero: "zero",
-    one: "one",
-    two: "two",
-    three: "three",
-    four: "four",
-    five: "five",
-    six: "six",
-    seven: "seven",
-    eight: "eight",
-    nine: "nine",
-  };
-
-  let result = "";
-  let currentWord = "";
-
-  for (let i = 0; i < digits.length; i++) {
-    currentWord += digits[i];
-    if (currentWord in digitDictionary) {
-      result += digitDictionary[currentWord] + " ";
-      currentWord = ""; // Reset the currentWord.
-    }
-  }
-  return result.trim();
+  return (
+    digits.match(/zero|one|two|three|four|five|six|seven|eight|nine/g) || []
+  ).join` `;
 };
 
 console.log(uncollapse("onetwofoureighttwozeronineeight"));
