@@ -12,26 +12,9 @@ even numbers descending: [      8, 4,    2]
 */
 
 const sortArray = (array) => {
-  const oddNumbers = array.filter((num) => num % 2 !== 0).sort((a, b) => a - b);
-  const evenNumbers = array
-    .filter((num) => num % 2 === 0)
-    .sort((a, b) => b - a);
-  const result = [];
-
-  let oddIndex = 0;
-  let evenIndex = 0;
-
-  for (let i = 0; i < array.length; i++) {
-    if (array[i] % 2 !== 0) {
-      result.push(oddNumbers[oddIndex]);
-      oddIndex++;
-    } else {
-      result.push(evenNumbers[evenIndex]);
-      evenIndex++;
-    }
-  }
-
-  return result;
+  const odd = array.filter((x) => x % 2).sort((a, b) => a - b);
+  const even = array.filter((x) => !(x % 2)).sort((a, b) => b - a);
+  return array.map((x) => (x % 2 ? odd.shift() : even.shift()));
 };
 
 console.log(sortArray([2, 22, 37, 11, 4, 1, 5, 0]));
