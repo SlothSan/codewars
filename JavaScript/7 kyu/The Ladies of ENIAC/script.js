@@ -10,10 +10,7 @@ Result should be all in uppercase.
 */
 
 const radLadies = (name) => {
-  return name
-    .match(/([A-Za-z !])/g)
-    .join("")
-    .toUpperCase();
+  return name.replace(/[^A-Za-z !]/g, "").toUpperCase();
 };
 
 console.log(
