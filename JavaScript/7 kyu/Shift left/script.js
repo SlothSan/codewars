@@ -1,15 +1,21 @@
 /*
-You are given two strings. In a single move, you can choose any of them, and delete the first (i.e. leftmost) character.
+Task
+Coding in function blackAndWhite. function accept 1 parameter arr(a number array).
 
-For Example:
+If arr is not an array, function should return:
 
-By applying a move to the string "where", the result is the string "here".
-By applying a move to the string "a", the result is an empty string "".
-Implement a function that calculates the minimum number of moves that should be performed to make the given strings equal.
+"It's a fake array"
+If arr contains elements 5 and 13, function should return:
 
-Notes
-Both strings consist of lowercase latin letters.
-If the string is already empty, you cannot perform any more delete operations.
+"It's a black array"
+If arr contains neither 5 nor 13, function should return:
+
+"It's a white array"
+Examples
+blackAndWhite(5,13) should return "It's a fake array"
+blackAndWhite([5,13]) should return "It's a black array"
+blackAndWhite([5,12]) should return "It's a white array" 
+Using string template and ternary operator can make your work easier.
 */
 
 const shiftLeft = (s, t) => {
