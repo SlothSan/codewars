@@ -42,10 +42,8 @@ class Point {
   }
 }
 
-function circleArea(circle) {
-  const radius = circle.radius;
-  const area = Math.PI * Math.pow(radius, 2);
-  return Math.round(area * 1e6) / 1e6;
+function circleArea({radius}) {
+  return radius * radius * Math.PI;
 }
 
 console.log(+circleArea(new Circle(new Point(10, 10), 30)).toFixed(6));
