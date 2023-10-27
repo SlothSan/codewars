@@ -10,15 +10,5 @@ To find out more about Morse Code follow this link: https://en.wikipedia.org/wik
 A preloaded object/dictionary/hash called CHAR_TO_MORSE will be provided to help convert characters to Morse Code.
 */
 
-function encryption(message) {
-  let result = "";
-  for (let i = 0; i < message.length; i++) {
-    let curr = message[i];
-    if (curr === " ") {
-      result += "  ";
-    } else {
-      result += CHAR_TO_MORSE[curr] + " ";
-    }
-  }
-  return result.trim();
-}
+const encryption = (message) =>
+  [...message].map((v) => CHAR_TO_MORSE[v] || v).join(" ");
