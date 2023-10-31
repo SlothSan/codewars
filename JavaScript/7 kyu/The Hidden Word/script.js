@@ -25,15 +25,11 @@ Maya won't forget to thank you at the end of her article :)
 */
 
 const hiddenWord = (num) => {
-  num = String(num)
-    .split("")
-    .map((curr) => +curr);
-  let result = "";
   let key = ["o", "b", "l", "i", "e", "t", "a", "d", "n", "m"];
-  for (let i = 0; i < num.length; i++) {
-    result += key[num[i]];
-  }
-  return result;
+  return String(num)
+    .split("")
+    .map((curr) => key[curr])
+    .join("");
 };
 
 console.log(hiddenWord(49632));
