@@ -22,20 +22,11 @@ The two strings will be the same length.
 */
 
 const neutralise = (s1, s2) => {
-  if (s1.length !== s2.length) {
-    return "Input strings must have the same length.";
-  }
-  let result = "";
+  let res = "";
   for (let i = 0; i < s1.length; i++) {
-    if (s1[i] === "+" && s2[i] === "+") {
-      result += "+";
-    } else if (s1[i] === "-" && s2[i] === "-") {
-      result += "-";
-    } else {
-      result += "0";
-    }
+    res += s1[i] !== s2[i] ? "0" : s1[i];
   }
-  return result;
+  return res;
 };
 
 console.log(neutralise("--++--", "++--++"));
