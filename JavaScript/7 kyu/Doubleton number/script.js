@@ -9,26 +9,10 @@ doubleton(1234) === 1311
 doubleton(10) === 12
 */
 
-const isDoubleton = (num) => {
-  let strNum = String(num);
-  let map = {};
-  for (let i = 0; i < strNum.length; i++) {
-    let curr = strNum[i];
-    if (!map.hasOwnProperty(curr)) {
-      map[curr] = true;
-    }
-  }
-  let nums = Object.keys(map).length;
-  return nums === 2;
-};
+const isDoubleton = (num) => new Set(String(num)).size === 2;
 
-const doubleton = (num) => {
-  num++;
-  while (!isDoubleton(num)) {
-    num++;
-  }
-  return num;
-};
+const doubleton = (num) =>
+  isDoubleton(num + 1) ? num + 1 : doubleton(num + 1);
 
 console.log(doubleton(1234));
 //1311
