@@ -10,11 +10,6 @@ checkVowel('cat', 4)  ->   false // this position doesn't exist
 }
 */
 
-const checkVowel = (string, position) => {
-  if (position < 0 || !string) return false;
-  return string.length >= position && string[position] !== undefined
-    ? /[aeiou]/g.test(string.toLowerCase()[position])
-    : false;
-};
+const checkVowel = (s, p) => "aeiouAEIOU".includes(s[p]);
 
 console.log(checkVowel("cat", 1)); //true
