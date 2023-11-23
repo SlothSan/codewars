@@ -19,41 +19,15 @@ palindrome("1221") => "Not valid"
 */
 
 const isPalindrome = (num) => {
-  if (num <= 10) return false;
-  const str = String(num);
-  let left = 0;
-  let right = str.length - 1;
-
-  while (left < right) {
-    if (str[left] !== str[right]) {
-      return false;
-    }
-    left++;
-    right--;
-  }
-  return true;
+  return num > 10 && num == num.toString().split("").reverse().join("")
+    ? true
+    : false;
 };
-
 const palindrome = (num) => {
-  if (typeof num !== "number" || num < 0 || num % 1 !== 0) {
-    return "Not valid";
-  }
-
-  if (isPalindrome(num)) {
-    return num;
-  }
-
-  let smaller = num - 1;
-  let larger = num + 1;
-
-  while (true) {
-    if (isPalindrome(smaller)) {
-      return smaller;
-    } else if (isPalindrome(larger)) {
-      return larger;
-    }
-    smaller--;
-    larger++;
+  if (!Number.isInteger(num) || num < 0) return "Not valid";
+  for (let i = 0; 1 == 1; i++) {
+    if (isPalindrome(num + i)) return num + i;
+    if (isPalindrome(num - i)) return num - i;
   }
 };
 
