@@ -53,19 +53,19 @@ Thank to all users who contributed to this kata! I appreciate your input!
 
 class FileMaster {
   constructor(filepath) {
-    this.splitPath = filepath.split("/");
+    this.info = filepath.match(/^(.*\/)([^.]+)\.(.*)$/);
   }
 
   extension() {
-    return this.splitPath[this.splitPath.length - 1].split(".")[1];
+    return this.info[3];
   }
 
   filename() {
-    return this.splitPath[this.splitPath.length - 1].split(".")[0];
+    return this.info[2];
   }
 
   dirpath() {
-    return this.splitPath.slice(0, this.splitPath.length - 1).join("/") + "/";
+    return this.info[1];
   }
 }
 
