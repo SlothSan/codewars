@@ -28,28 +28,23 @@ Note that no matter what ingredients are passed, our taco will always have a she
 */
 
 const tacofy = (word) => {
-  word = word.toLowerCase();
-  const ingredients = {
-    a: "beef",
-    e: "beef",
-    i: "beef",
-    o: "beef",
-    u: "beef",
+  const map = {
     t: "tomato",
     l: "lettuce",
     c: "cheese",
     g: "guacamole",
     s: "salsa",
+    a: "beef",
+    e: "beef",
+    i: "beef",
+    o: "beef",
+    u: "beef",
   };
-  let result = ["shell"];
-  for (let i = 0; i < word.length; i++) {
-    let curr = word[i];
-    if (ingredients[curr]) {
-      result.push(ingredients[curr]);
-    }
-  }
-  result.push("shell");
-  return result;
+  return [
+    "shell",
+    ...[...word].map((x) => map[x.toLowerCase()]).filter((x) => x),
+    "shell",
+  ];
 };
 
 console.log(tacofy("ogl"));
