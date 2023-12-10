@@ -27,25 +27,12 @@ result = "a#cd#"
 */
 
 const assembleString = (array) => {
-  if (array.length === 0) {
-    return "";
-  }
-
-  const maxLength = array.reduce((max, str) => Math.max(max, str.length), 0);
-  let result = "";
-
-  for (let i = 0; i < maxLength; i++) {
-    let nonAsteriskChars = array.filter((str) => str[i] !== "*");
-    let uniqueChars = [...new Set(nonAsteriskChars.map((str) => str[i]))];
-
-    if (uniqueChars.length === 1) {
-      result += uniqueChars[0];
-    } else {
-      result += "#";
-    }
-  }
-
-  return result;
+  return !array.length
+    ? ""
+    : [...array[0]].map((x, i) => {
+        let s = array.find((y) => y[i] != "*");
+        return !s ? "#" : s[i];
+      }).join``;
 };
 
 console.log(
