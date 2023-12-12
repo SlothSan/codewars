@@ -20,10 +20,7 @@ Check Eloquent Javascript p176
 https://regex101.com/#javascript
 */
 
-
-const heggeleggleggo = (word) => {
-  return word.replace(/([b-df-hj-np-tv-z])/gi, "$1egg");
-};
+const heggeleggleggo = (word) => word.replace(/([^aeiou ])/gi, "$1egg");
 
 console.log(heggeleggleggo("codewars"));
 //ceggodeggeweggareggsegg
