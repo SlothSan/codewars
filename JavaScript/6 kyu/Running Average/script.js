@@ -20,13 +20,12 @@ rAvg(12) = 11;
 */
 
 const runningAverage = () => {
-  let total = 0;
-  let count = 0;
-
-  return function (new_value) {
-    total += new_value;
-    count += 1;
-    return parseFloat((total / count).toFixed(2));
+  let arr = [];
+  return (num) => {
+    arr.push(num);
+    return (
+      Math.round((arr.reduce((a, b) => a + b, 0) / arr.length) * 100) / 100
+    );
   };
 };
 
