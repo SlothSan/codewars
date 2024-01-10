@@ -10,7 +10,7 @@ See example test case for more details.
 */
 
 const pizzaRewards = (customers, minOrders, minPrice) => {
-  Object.keys(customers).filter(
+  return Object.keys(customers).filter(
     (customer) =>
       customers[customer].filter((order) => order >= minPrice).length >=
       minOrders
