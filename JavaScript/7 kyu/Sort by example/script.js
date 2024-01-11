@@ -13,18 +13,7 @@ Result: [4,4,4,4,1,3,5]
 */
 
 const exampleSort = (arr, exampleArr) => {
-  const indexMap = new Map();
-  exampleArr.forEach((element, index) => {
-    indexMap.set(element, index);
-  });
-
-  const sortFunction = (a, b) => {
-    const indexA = indexMap.has(a) ? indexMap.get(a) : Infinity;
-    const indexB = indexMap.has(b) ? indexMap.get(b) : Infinity;
-    return indexA - indexB;
-  };
-
-  return arr.sort(sortFunction);
+  return arr.sort((a, b) => exampleArr.indexOf(a) - exampleArr.indexOf(b));
 };
 
 console.log(exampleSort([1, 2, 3, 4, 5], [2, 3, 4, 1, 5]));
