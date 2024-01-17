@@ -13,7 +13,7 @@ String.prototype.replace(your regexp, "")
 Have fun :)
 */
 
-const reg = /<[^>]+>|<\/[^>]+>|<[^\/]+\/>/g;
+const reg = /<.+?>/g;
 
 console.log("<div>TESTING!23</div>".replace(reg, ""));
 //TESTING!23
