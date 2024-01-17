@@ -14,8 +14,7 @@ wordSearch("akes the",text)--> false
 */
 
 const wordSearch = (word, text) => {
-  const escapedWord = word.replace(/[-\/\\^$*+?.()|[\]{}]/g, "\\$&");
-  const regex = new RegExp("\\b" + escapedWord + "\\b", "i");
+  const regex = new RegExp("\\b" + word + "\\b", "i");
   return regex.test(text);
 };
 
