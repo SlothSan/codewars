@@ -10,18 +10,9 @@ Return True/true if there are more (or equal) positive words than negative words
 */
 
 const connotation = (str) => {
-  const words = str.split(/\s+/);
-  let positiveCount = 0;
-  let negativeCount = 0;
-  words.forEach((word) => {
-    const firstLetter = word.charAt(0).toLowerCase();
-    if (firstLetter >= "a" && firstLetter <= "m") {
-      positiveCount++;
-    } else if (firstLetter >= "n" && firstLetter <= "z") {
-      negativeCount++;
-    }
-  });
-  return positiveCount >= negativeCount;
+  let positiveMatches = str.match(/\b[a-m]/gi) || [];
+  let negativeMatches = str.match(/\b[n-z]/gi) || [];
+  return positiveMatches.length >= negativeMatches.length;
 };
 
 console.log(
