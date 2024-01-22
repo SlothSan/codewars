@@ -20,27 +20,11 @@ function Node(data, next = null) {
 }
 
 function filter(head, predicate) {
-  if (!head) {
-    return null;
-  }
-
-  let current = head;
-  let newHead = null;
-  let newTail = null;
-
-  while (current) {
-    if (predicate(current.data)) {
-      if (!newHead) {
-        newHead = newTail = new Node(current.data);
-      } else {
-        newTail.next = new Node(current.data);
-        newTail = newTail.next;
-      }
-    }
-    current = current.next;
-  }
-
-  return newHead;
+  return !head
+    ? null
+    : predicate(head.data)
+    ? new Node(head.data, filter(head.next, predicate))
+    : filter(head.next, predicate);
 }
 
 console.log(filter(new Node(1, new Node(2, new Node(3))), (x) => x <= 2));
