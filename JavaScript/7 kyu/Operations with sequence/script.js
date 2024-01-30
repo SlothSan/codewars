@@ -16,15 +16,12 @@ P.S.: The sequence consists only of integers. And try not to use "for", "while" 
 */
 
 const calc = (a) => {
-  const squaredNumbers = a.map((num) => (num > 0 ? num * num : num));
-  const multipliedBy3 = squaredNumbers.map((num, index) =>
-    (index + 1) % 3 === 0 ? num * 3 : num
-  );
-  const multipliedByMinus1 = multipliedBy3.map((num, index) =>
-    (index + 1) % 5 === 0 ? num * -1 : num
-  );
-  const result = multipliedByMinus1.reduce((sum, num) => sum + num, 0);
-  return result;
+  return a.reduce((acc, curr, i) => {
+    if (curr > 0) curr *= curr;
+    if ((i + 1) % 3 === 0) curr *= 3;
+    if ((i + 1) % 5 === 0) curr *= -1;
+    return acc + curr;
+  }, 0);
 };
 
 console.log(calc([10, 40, 412, -120, 313]));
