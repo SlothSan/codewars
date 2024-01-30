@@ -16,20 +16,12 @@ P.S.: The sequence consists only of integers. And try not to use "for", "while" 
 */
 
 const calc = (a) => {
-  return a
-    .map((num, index) => {
-      if (num > 0) {
-        num = num * num;
-      }
-      if ((index + 1) % 3 === 0) {
-        num = num * 3;
-      }
-      if ((index + 1) % 5 === 0) {
-        num = num * -1;
-      }
-      return num;
-    })
-    .reduce((sum, num) => sum + num, 0);
+  return a.reduce((acc, curr, i) => {
+    if (curr > 0) curr *= curr;
+    if ((i + 1) % 3 === 0) curr *= 3;
+    if ((i + 1) % 5 === 0) curr *= -1;
+    return acc + curr;
+  }, 0);
 };
 
 console.log(calc([10, 40, 412, -120, 313]));
