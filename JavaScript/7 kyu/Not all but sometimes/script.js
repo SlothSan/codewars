@@ -11,8 +11,7 @@ remove('hello world',{'x':5, 'i':2}) === 'hello world'
 remove('apples and bananas',{'a':50, 'n':1}) === 'pples d bnns'
 // we don't have 50 a's, so just remove it till we hit end of string.
 */
-
-function remove(str, what) {
+const remove = (str, what) => {
   let strArray = str.split("");
 
   for (let char in what) {
@@ -26,7 +25,7 @@ function remove(str, what) {
   }
 
   return strArray.join("");
-}
+};
 
 console.log(remove("this is a string", { t: 1, i: 2 }));
 //hs s a string
