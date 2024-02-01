@@ -28,9 +28,7 @@ const isTwinPrime = (number) => {
     }
     return true;
   };
-  if (!isPrime(number)) return false;
-  if (!isPrime(number + 2) && !isPrime(number - 2)) return false;
-  return true;
+  return isPrime(number) && (isPrime(number - 2) || isPrime(number + 2));
 };
 
 console.log(isTwinPrime(5)); //true
