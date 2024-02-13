@@ -24,11 +24,7 @@ Enjoy it and happy coding!!
 const barTriang = (p1, p2, p3) => {
   let x0 = (p1[0] + p2[0] + p3[0]) / 3;
   let x1 = (p1[1] + p2[1] + p3[1]) / 3;
-
-  x0 = Math.round(x0 * 10000) / 10000;
-  x1 = Math.round(x1 * 10000) / 10000;
-
-  return [x0, x1];
+  return [+x0.toFixed(4), +x1.toFixed(4)];
 };
 
-console.log(barTriang([4, 6], [12, 4]))
+console.log(barTriang([4, 6], [12, 4]));
