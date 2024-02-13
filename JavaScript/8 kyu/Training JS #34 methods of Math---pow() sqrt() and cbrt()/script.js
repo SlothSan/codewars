@@ -105,12 +105,7 @@ The two examples above seems to meet our requirements, but please note: a cube i
 */
 
 const cutCube = (volume, n) => {
-  const cubeRoot = Math.round(Math.pow(n, 1 / 3));
-  if (cubeRoot ** 3 !== n) {
-    return false;
-  }
-  const sideLength = Math.round(Math.pow(volume, 1 / 3));
-  return volume === Math.pow(sideLength, 3) && volume % n === 0;
+  return !(Math.cbrt(n) % 1) && !(Math.cbrt(volume / n) % 1);
 };
 
 console.log(cutCube(27, 27)); //true
