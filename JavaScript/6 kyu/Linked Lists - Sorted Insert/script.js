@@ -8,25 +8,15 @@ sortedInsert(1 -> 7 -> 8 -> null, 5) === 1 -> 5 -> 7 -> 8 -> null)
 sortedInsert(3 -> 5 -> 9 -> null, 7) === 3 -> 5 -> 7 -> 9 -> null)
 */
 
-function Node(data) {
+function Node(data, next) {
   this.data = data;
-  this.next = null;
+  this.next = next;
 }
 
 function sortedInsert(head, data) {
-  let newNode = new Node(data);
-  if (!head || data < head.data) {
-    newNode.next = head;
-    return newNode;
+  if (!head || data < head.data) return new Node(data, head);
+  else {
+    head.next = sortedInsert(head.next, data);
+    return head;
   }
-
-  let current = head;
-  while (current.next && data > current.next.data) {
-    current = current.next;
-  }
-
-  newNode.next = current.next;
-  current.next = newNode;
-
-  return head;
 }
