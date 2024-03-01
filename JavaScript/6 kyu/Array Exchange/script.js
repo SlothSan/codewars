@@ -15,10 +15,19 @@ otherArray => ['c', 'b', 'a']
 */
 
 const exchangeWith = (a, b, c = a.slice()) => {
-    a.splice(0, a.length, ...b.reverse());
-    b.splice(0, b.length, ...c.reverse());
-}
+  a.splice(0, a.length, ...b.reverse());
+  b.splice(0, b.length, ...c.reverse());
+};
 let a = ["1", "2", "3", "4", "5", "6", "7"];
-let b = ["c", "b", "a"]
+let b = ["c", "b", "a"];
 
-console.log(exchangeWith(, ));
+exchangeWith(a, b);
+
+console.log(a, b);
+/*
+[ 'a', 'b', 'c' ] [
+  '7', '6', '5',
+  '4', '3', '2',
+  '1'
+]
+*/
