@@ -90,7 +90,7 @@ function decodeResistorColors(bands) {
     ohmsString = `${ohms} ohms, ${toleranceValue}%`;
   } else if (ohms < 1000000) {
     ohms /= 1000;
-    ohmsString = `${ohms.toFixed(1)}k ohms, ${toleranceValue}%`;
+    ohmsString = `${ohms}k ohms, ${toleranceValue}%`;
   } else {
     ohms /= 1000000;
     ohmsString = `${ohms}M ohms, ${toleranceValue}%`;
