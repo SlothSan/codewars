@@ -41,63 +41,29 @@ More examples, featuring some common resistor values
 Have fun! And if you enjoy this kata, check out the sequel: Resistor Color Codes, Part 2
 */
 
-function decodeResistorColors(bands) {
+const decodeResistorColors = (bands) => {
   const colors = {
-    black: 0,
-    brown: 1,
-    red: 2,
-    orange: 3,
-    yellow: 4,
-    green: 5,
-    blue: 6,
-    violet: 7,
-    gray: 8,
-    white: 9,
-  };
-
-  const tolerance = {
-    gold: 5,
-    silver: 10,
-  };
-
-  const powers = {
-    black: 0,
-    brown: 1,
-    red: 2,
-    orange: 3,
-    yellow: 4,
-    green: 5,
-    blue: 6,
-    violet: 7,
-    gray: 8,
-    white: 9,
-  };
-
-  const bandsArray = bands.split(" ");
-  let ohms =
-    (colors[bandsArray[0]] * 10 + colors[bandsArray[1]]) *
-    Math.pow(10, powers[bandsArray[2]]);
-
-  let toleranceValue;
-  if (bandsArray.length === 4) {
-    toleranceValue = tolerance[bandsArray[3]];
-  } else {
-    toleranceValue = 20;
-  }
-
-  let ohmsString;
-  if (ohms < 1000) {
-    ohmsString = `${ohms} ohms, ${toleranceValue}%`;
-  } else if (ohms < 1000000) {
-    ohms /= 1000;
-    ohmsString = `${ohms}k ohms, ${toleranceValue}%`;
-  } else {
-    ohms /= 1000000;
-    ohmsString = `${ohms}M ohms, ${toleranceValue}%`;
-  }
-
-  return ohmsString;
-}
+      black: 0,
+      brown: 1,
+      red: 2,
+      orange: 3,
+      yellow: 4,
+      green: 5,
+      blue: 6,
+      violet: 7,
+      gray: 8,
+      white: 9,
+      gold: 5,
+      silver: 10,
+    },
+    [first, second, multiplier, tolerance] = bands
+      .split(" ")
+      .map((color) => colors[color]),
+    ohm = (10 * first + second) * 10 ** multiplier;
+  return `${
+    ohm >= 10 ** 6 ? ohm / 10 ** 6 + "M" : ohm >= 1000 ? ohm / 1000 + "k" : ohm
+  } ohms, ${tolerance || 20}%`;
+};
 
 console.log(decodeResistorColors("brown black green silver"));
 //1M ohms, 10%
