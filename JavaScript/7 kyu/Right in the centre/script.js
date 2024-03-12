@@ -22,9 +22,25 @@ const isInMiddle = (seq) => {
   let length = seq.length;
   let index = seq.indexOf("abc");
 
-  if (index == -1 || length < 3) return false;
+  if (index == -1 || length < 3) {
+    return false;
+  }
 
-  return Math.abs(index - (length - index - 3)) <= 1;
+  let leftLength = index;
+  let rightLength = length - index - 3;
+
+  while (index != -1) {
+    if (Math.abs(leftLength - rightLength) <= 1) {
+      return true;
+    }
+    index = seq.indexOf("abc", index + 1);
+    if (index != -1) {
+      leftLength = index;
+      rightLength = length - index - 3;
+    }
+  }
+
+  return false;
 };
 
 console.log(isInMiddle("AabcBB")); //true
