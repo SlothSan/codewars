@@ -14,15 +14,7 @@ Quick Note: A string will always be passed in (though it may be empty) so no nee
 */
 
 const esrever = (str) => {
-  let lastChar = str.charAt(str.length - 1);
-  str = str.slice(0, str.length - 1);
-  return (
-    str
-      .split("")
-      .reverse()
-      .map((curr) => curr.split("").reverse().join(""))
-      .join("") + lastChar
-  );
+  return str.slice(0, -1).split("").reverse().join("") + str.slice(-1);
 };
 
 console.log(esrever("an Easy one?"));
