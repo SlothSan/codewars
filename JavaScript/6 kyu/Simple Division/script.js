@@ -26,7 +26,7 @@ const primeFactors = (num) => {
   return factors;
 }
 
-const solve(a, b) => {
+const solve = (a, b) => {
   const bFactors = primeFactors(b);
   for (const factor of bFactors) {
     if (a % factor !== 0) return false;
