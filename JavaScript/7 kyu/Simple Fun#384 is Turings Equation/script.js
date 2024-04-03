@@ -54,14 +54,13 @@ Happy Coding ^_^
 */
 
 const isTuringEquation = (s) => {
-  const [leftSide, rightSide] = s.split("=");
-
-  const reversedLeft = reverseNumber(leftSide);
-  const reversedRight = reverseNumber(rightSide);
-
-  return eval(reversedLeft) === eval(reversedRight);
+  const arr = s.replace("+", "=").split("=");
+  const first = arr[0].split("").reverse().join("") * 1;
+  const second = arr[1].split("").reverse().join("") * 1;
+  const third = arr[2].split("").reverse().join("") * 1;
+  return first + second === third;
 };
 
 const reverseNumber = (numStr) => numStr.split("").reverse().join("");
 
-console.log(isTuringEquation("73+42=16")); //true
+console.log(isTuringEquation("00034183000+00025204000=00059387000")); //true
