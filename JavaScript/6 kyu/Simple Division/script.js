@@ -24,7 +24,7 @@ const primeFactors = (num) => {
     }
   }
   return factors;
-}
+};
 
 const solve = (a, b) => {
   const bFactors = primeFactors(b);
@@ -32,6 +32,6 @@ const solve = (a, b) => {
     if (a % factor !== 0) return false;
   }
   return true;
-}
+};
 
-console.log(solve(2, 256)) //true
+console.log(solve(2, 256)); //true
