@@ -26,11 +26,8 @@ const bestFriend = (txt, a, b) => {
   for (let i = 0; i < txt.length; i++) {
     let curr = txt[i];
     let next = txt[i + 1];
-    if (curr === a) {
-      if (next !== b) return false;
-    }
+    if (curr === a && next !== b) return false;
   }
-
   return true;
 };
 
