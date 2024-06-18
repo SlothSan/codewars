@@ -22,7 +22,6 @@ const solequa = (n) => {
     if (n % a === 0) {
       let b = n / a;
 
-      // Check the conditions for x and y to be integers
       if ((a + b) % 2 === 0 && (b - a) % 4 === 0) {
         let x = (a + b) / 2;
         let y = (b - a) / 4;
@@ -31,8 +30,6 @@ const solequa = (n) => {
       }
     }
   }
-
-  // Sort results in descending order of x
   results.sort((a, b) => b[0] - a[0]);
 
   return results;
