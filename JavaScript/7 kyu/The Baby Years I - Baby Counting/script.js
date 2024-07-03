@@ -21,18 +21,20 @@ If there are no babies in the string - you lost the baby!! Return a different va
 */
 
 const babyCount = (x) => {
-  x = x.toLowerCase();
-  let count = 0;
-  while (
-    x.includes("b") &&
-    x.includes("a") &&
-    x.includes("b") &&
-    x.includes("y")
-  ) {
-    x = x.replace("b", "").replace("a", "").replace("b", "").replace("y", "");
-    count++;
+  let b = 0;
+  let a = 0;
+  let y = 0;
+  x.toLowerCase().split``.map((v) =>
+    v === "a" ? a++ : v === "y" ? y++ : v === "b" ? b++ : 1
+  );
+  let baby = 0;
+  while (b > 1 && a > 0 && y > 0) {
+    b -= 2;
+    a -= 1;
+    y -= 1;
+    baby++;
   }
-  return count > 0 ? count : "Where's the baby?!";
+  return baby ? baby : "Where's the baby?!";
 };
 
 console.log(babyCount("Happy babies boom ba by?")); //2
