@@ -16,15 +16,8 @@ There may be multiple fridges, and multiple pillows. But you need at least 1 pil
 100 random tests
 */
 
-const pillow = (s) => {
-  for (let i = 0; i < s[0].length; i++) {
-    if (s[0][i] === "n") {
-      if (s[1][i] === "B") {
-        return true;
-      }
-    }
-  }
-  return false;
+const pillow = ([a, b]) => {
+  return [...a].some((n, i) => n === "n" && b[i] === "B");
 };
 
 console.log(pillow(["n", "B"])); //true
