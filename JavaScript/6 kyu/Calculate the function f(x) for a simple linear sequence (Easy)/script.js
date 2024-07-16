@@ -14,38 +14,19 @@ Examples (input -> output):
 */
 
 const getFunction = (sequence) => {
-  let differences = [];
-  for (let i = 1; i < sequence.length; i++) {
-    differences.push(sequence[i] - sequence[i - 1]);
-  }
-
-  if (!differences.every((val, i, arr) => val === arr[0])) {
-    return "Non-linear sequence";
-  }
-
-  let a = differences[0];
-  let b = sequence[0];
-  let functionString = "f(x) = ";
-
-  if (a === 0) {
-    functionString += b;
-  } else {
-    if (a !== 1) {
-      functionString += a + "x";
-    } else {
-      functionString += "x";
-    }
-
-    if (b !== 0) {
-      if (b > 0) {
-        functionString += " + " + b;
-      } else {
-        functionString += " - " + Math.abs(b);
-      }
-    }
-  }
-
-  return functionString;
+  let add = sequence[0],
+    mul = sequence[1] - add,
+    linear = sequence.every(function (v, i) {
+      return v == i * mul + add;
+    });
+  return linear
+    ? "f(x) = " +
+        (mul
+          ? (mul == 1 ? "" : mul == -1 ? "-" : mul) +
+            "x" +
+            (!add ? "" : (add > 0 ? " + " : " - ") + Math.abs(add))
+          : add)
+    : "Non-linear sequence";
 };
 
 console.log(getFunction([0, 1, 2, 3, 4]));
