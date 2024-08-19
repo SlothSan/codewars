@@ -24,16 +24,7 @@ For s = "q q", the output should be false.
 */
 
 const coolString = (s) => {
-  if (!/^[a-zA-Z]+$/.test(s)) return false;
-  for (let i = 0; i < s.length - 1; i++) {
-    if (
-      (s[i] >= "a" && s[i] <= "z" && s[i + 1] >= "a" && s[i + 1] <= "z") ||
-      (s[i] >= "A" && s[i] <= "Z" && s[i + 1] >= "A" && s[i + 1] <= "Z")
-    ) {
-      return false;
-    }
-  }
-  return true;
+  return !/[^a-z]/gi.test(s) && !/([a-z]{2,})|([A-Z]{2,})/g.test(s);
 };
 
 console.log(coolString("MiKe"));
