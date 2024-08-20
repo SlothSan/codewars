@@ -19,3 +19,8 @@ const decomposeSingleStrand = (singleStrand) => {
 };
 
 console.log(decomposeSingleStrand("AGGTGACACCGCAAGCCTTATATTAGC"));
+/*
+Frame 1: AGG TGA CAC CGC AAG CCT TAT ATT AGC
+Frame 2: A GGT GAC ACC GCA AGC CTT ATA TTA GC
+Frame 3: AG GTG ACA CCG CAA GCC TTA TAT TAG C
+*/
