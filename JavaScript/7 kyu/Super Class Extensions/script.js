@@ -26,4 +26,4 @@ class Cat extends Animal {
   }
 }
 
-console.log(new Cat("Whiskers").speak());
+console.log(new Cat("Whiskers").speak()); //Whiskers makes a noise, Whiskers goes meow.

@@ -26,7 +26,7 @@ If you manage to complete it, you can try a harder version here.
 Good luck!
 */
 
-function myCrib(n) {
+const myCrib  = (n) => {
   let house = [];
   for (let i = 0; i < n; i++) {
     house.push(
