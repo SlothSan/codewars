@@ -31,3 +31,4 @@ const swap = (s, n) => {
 };
 
 console.log(swap("gOOd MOrniNg", 7864));
+//GooD MorNIng
