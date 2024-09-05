@@ -14,12 +14,8 @@ Examples
 */
 
 const someButNotAll = (seq, pred) => {
-  let trueCount = 0,
-    falseCount = 0;
-  for (const element of seq) {
-    pred(element) ? trueCount++ : falseCount++;
-  }
-  return trueCount > 0 && falseCount > 0;
+  const arr = Array.from(seq);
+  return arr.some(pred) && !arr.every(pred);
 };
 
 console.log(someButNotAll("abcdefg&%$", (str) => /[a-z]/i.test(str))); //true
