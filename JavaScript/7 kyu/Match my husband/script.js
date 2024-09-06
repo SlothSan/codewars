@@ -14,15 +14,9 @@ Every woman that signs up, begins with a "needs" rating of 100. However, it's re
 Given the number of months since sign up, write a function that returns "Match!" if the husband is useful enough, or "No match!" if he's not.
 */
 
-const match = (usefulness, months) => {
-  let target = 100;
-  while (months) {
-    target = target - target * 0.15;
-    months--;
-  }
-  return usefulness.reduce((acc, curr) => acc + curr, 0) > target
+const match = (usefulness, months) =>
+  usefulness.reduce((acc, curr) => acc + curr, 0) > 100 * Math.pow(0.85, months)
     ? "Match!"
     : "No match!";
-};
 
 console.log(match([26, 23, 19], 3)); //Match!
