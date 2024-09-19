@@ -35,3 +35,14 @@ const sortPhotos = (photos) => {
 console.log(
   sortPhotos(["2016.img1", "2016.img2", "2015.img3", "2016.img4", "2013.img5"])
 );
+
+/*
+[
+  '2013.img5',
+  '2015.img3',
+  '2016.img1',
+  '2016.img2',
+  '2016.img4',
+  '2016.img5'
+]
+*/
