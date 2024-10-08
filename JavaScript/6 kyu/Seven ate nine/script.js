@@ -8,3 +8,4 @@ const hungrySeven = (arr) =>
     : arr;
 
 console.log(hungrySeven([7, 8, 9]));
+//[ 8, 9, 7 ]
