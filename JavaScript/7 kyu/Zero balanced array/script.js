@@ -9,4 +9,4 @@ const ìsZeroBalanced = (a) => {
   return a.every((num) => a.includes(-num)) ? true : false;
 };
 
-console.log(isZeroBalanced([1, 2, 3, -1, -2, -3]));
+console.log(isZeroBalanced([1, 2, 3, -1, -2, -3])); //True
