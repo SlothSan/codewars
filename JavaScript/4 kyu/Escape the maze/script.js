@@ -92,7 +92,11 @@ const escape = (maze) => {
   return [];
 };
 
-const Maze = ["####### #", "#>#   # #", "#   #   #", "#########"];
+const Maze = [
+    "####### #", 
+    "#>#   # #", 
+    "#   #   #", 
+    "#########"];
 
 console.log(escape(Maze));
 
