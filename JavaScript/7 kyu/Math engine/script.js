@@ -31,4 +31,4 @@ const mathEngine = (arr) => {
   return (hasNonNegatives ? product : 1) + sum;
 };
 
-console.log(mathEngine([1, 2, 3, -4, -5]));
+console.log(mathEngine([1, 2, 3, -4, -5])); //-3
