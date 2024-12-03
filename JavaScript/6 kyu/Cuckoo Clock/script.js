@@ -15,8 +15,6 @@ Explanation: It chimes once at "03:45", 4 times at "04:00", once each at "04:15"
 Source: International Collegiate Programming Contest, North Central North American Regional, 2023.
 
 Related Kata: Fizz Buzz Cuckoo Clock
-
-
 */
 
 const cuckooClock = (inputTime, chimes) => {
