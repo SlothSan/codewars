@@ -50,3 +50,4 @@ function* sequenceGen(...initialTerms) {
 }
 const fib = sequenceGen(0, 1);
 console.log(fib.next().value, fib.next().value, fib.next().value);
+//0 1 1
