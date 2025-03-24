@@ -62,4 +62,4 @@ console.log(HEX.toString(), HEX.valueOf(), Hex.parse("0xFF"));
 
 let a = new Hex(10);
 let b = new Hex(5);
-console.log(a.plus(b).toJSON()); //0xf
+console.log(a.plus(b).toJSON()); //0xF
