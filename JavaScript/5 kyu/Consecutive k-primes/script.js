@@ -8,7 +8,7 @@ k = 5 -> 32, 48, 72, 80, 108, 112, …
 Task:
 Given an integer k and a list arr of positive integers the function consec_kprimes (or its variants in other languages) returns how many times in the sequence arr numbers come up twice in a row with exactly k prime factors?
 
-Examples:
+Examples:w
 arr = [10005, 10030, 10026, 10008, 10016, 10028, 10004]
 consec_kprimes(4, arr) => 3 because 10005 and 10030 are consecutive 4-primes, 10030 and 10026 too as well as 10028 and 10004 but 10008 and 10016 are 6-primes.
 
