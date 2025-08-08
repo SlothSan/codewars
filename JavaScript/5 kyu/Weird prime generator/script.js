@@ -30,8 +30,6 @@ Write functions:
 7: anOverAverage(n) with parameter n: returns as an *integer* the average of anOver(n) # (tested)
 Note:
 You can write directly functions 3:, 5: and 7:. There is no need to write functions 1:, 2:, 4: 6: except out of pure curiosity.
-
-
 */
 
 const gcd = (a, b) => {
