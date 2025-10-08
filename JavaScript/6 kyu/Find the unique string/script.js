@@ -12,6 +12,7 @@ This is the second kata in series:
 Find the unique number
 Find the unique string (this kata)
 Find The Unique
+*/
 
 const findUniq = (arr) => {
   const normalize = (str) =>
@@ -29,4 +30,4 @@ const findUniq = (arr) => {
   return arr[mapped.findIndex((k) => k === uniqueKey)];
 };
 
-console.log(findUniq(["Aa", "aaa", "aaaaa", "BbBb", "Aaaa", "AaAaAa", "a"]));
+console.log(findUniq(["Aa", "aaa", "aaaaa", "BbBb", "Aaaa", "AaAaAa", "a"])); //BbBb
