@@ -30,14 +30,13 @@ Musicians: all pitches based on equal tempermanent, taken from here.
 */
 
 const getNote = (pitch) => {
-  while (pitch < 440) pitch *= 2;
-  while (pitch >= 880) pitch /= 2;
-
-  const key = Object.keys(notesDictionary).find(
-    (k) => Math.abs(k - pitch) < 0.01,
-  );
-
-  return notesDictionary[key];
+  return notesDictionary[
+    Object.keys(notesDictionary)
+      .filter(function (element) {
+        return element % pitch == 0 || pitch % element == 0;
+      })
+      .join(" ")
+  ];
 };
 
 const notesDictionary = {
